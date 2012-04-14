@@ -1,0 +1,6 @@
+system:
+  default_locale: en
+  host: "test.example.com"
+
+mailer:
+  sender: 'bortovik.net <no-reply@test.example.com>'

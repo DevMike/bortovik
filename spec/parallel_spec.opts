@@ -1,0 +1,2 @@
+--format progress
+--format ParallelSpecs::SpecSummaryLogger --out log/parallel_profile.log

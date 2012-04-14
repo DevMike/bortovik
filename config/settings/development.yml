@@ -1,0 +1,7 @@
+system:
+  host: "localhost"
+  port: '3000'
+  enable_js_debug: true
+
+mailer:
+  sender: 'bortovik.net <no-reply@local.example.com>'

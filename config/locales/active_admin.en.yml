@@ -1,0 +1,7 @@
+en:
+  active_admin:
+    models:
+      user:
+        login_info: Login info
+        login: Impersonate
+        logged: You have logged as %{user}

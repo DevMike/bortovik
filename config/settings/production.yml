@@ -1,0 +1,6 @@
+system:
+  host: 'bortovik.net'
+  protocol: 'https'
+
+mailer:
+  sender: 'bortovik.net <no-reply@bortovik.net>'

@@ -1,0 +1,7 @@
+en:
+  flash:
+    actions:
+      update:
+        alert: There are errors in the form. Please scroll down, correct the errors, and resubmit the form.
+      create:
+        alert: There are errors in the form. Please scroll down, correct the errors, and resubmit the form.

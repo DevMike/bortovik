@@ -1,0 +1,39 @@
+en:
+  pagination:
+    first_label: "&laquo; First"
+    last_label: "Last &raquo;"
+    previous_label: "&laquo; Prev"
+    next_label: "Next &raquo;"
+    page_gap: "&hellip;"
+    multi_page: "Displaying %{model} %{from} - %{to} of %{count} in total"
+    single_page:
+      zero:  "No %{model} found"
+      one:   "Displaying 1 %{model}"
+      other: "Displaying all %{count} %{model}"
+    title:
+      first: 'First'
+      last: 'Last'
+      next: 'Next'
+      prev: 'Prev'
+    models:
+      review:
+        zero:  ratings
+        one:   rating
+        few:   ratings
+        other: ratings
+      customer:
+        zero:  ratings
+        one:   rating
+        few:   ratings
+        other: ratings
+      feedback:
+        zero:  inquiries
+        one:   inquiry
+        few:   inquiries
+        other: inquiries
+      call:
+        zero:  calls
+        one:   call
+        few:   calls
+        other: calls
+

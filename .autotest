@@ -1,0 +1,9 @@
+require 'autotest_notification'
+require 'autotest/fsevent' if RUBY_PLATFORM =~ /darwin/
+SPEAKING = false
+DOOM_EDITION = false
+BUUF = false
+PENDING = false
+STICKY = false
+SUCCESS_SOUND = ''
+FAILURE_SOUND = ''

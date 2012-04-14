@@ -1,0 +1,12 @@
+settings:
+  system:
+    locales: [en]
+    default_locale: en
+    default_country: UA
+    default_timezone: Kyiv
+
+  global:
+    hosts:
+      current: bortovik.net
+    names:
+      current: bortovik.net
