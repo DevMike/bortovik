@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Settlement do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'attributes' do
+    subject { FactoryGirl.create :settlement }
+
+    it { should validate_presence_of :name }
+    it { should validate_presence_of :russian_name}
+    it { should belong_to :region }
+  end
 end

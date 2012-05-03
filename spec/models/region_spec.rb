@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe Region do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'attributes' do
+    subject { FactoryGirl.create :region }
+
+    it { should validate_presence_of :name }
+    it { should validate_presence_of :russian_name}
+    it { should belong_to :country }
+    it { should have_many :settlements }
+  end
 end
