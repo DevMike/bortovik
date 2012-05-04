@@ -23,7 +23,7 @@ gem "cancan", "~> 1.6.7"
 gem "carmen", "~> 0.2.13"
 
 # config yaml file
-gem "rails_config", "~> 0.2.7"
+gem "rails_config", "~> 0.2.5d"
 
 # uploader
 # @TODO: need to be sure that this gem is the best to work with images
