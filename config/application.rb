@@ -33,7 +33,7 @@ module Bortovik
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    #config.i18n.default_locale = Settings.system.default_locale
+    config.i18n.default_locale = Settings.system.default_locale
 
     #fallbacks for translations
     config.i18n.fallbacks = true
