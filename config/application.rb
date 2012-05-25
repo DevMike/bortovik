@@ -60,5 +60,6 @@ module Bortovik
     config.assets.enabled = true
     config.assets.version = '2.0'
     config.assets.prefix = '/assets'
+    config.assets.initialize_on_precompile = false
   end
 end

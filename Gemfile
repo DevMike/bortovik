@@ -114,3 +114,6 @@ group :test do
   gem "spork", "~> 1.0.0r2"
   gem "email_spec", "~> 1.2.1"
 end
+
+# register
+gem "devise", "~> 2.1"
