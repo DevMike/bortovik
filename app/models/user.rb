@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  belongs_to :settlement
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -7,8 +9,8 @@ class User < ActiveRecord::Base
          :authentication_keys => [:login]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :login,:name, :email, :password, :password_confirmation, :remember_me, :agree
-  attr_accessor :login
+  attr_accessible :login,:name, :email, :password, :password_confirmation, :remember_me
+  attr_accessor :login, :agree, :country
   # attr_accessible :title, :body
 
   #validates_presence_of :name
@@ -22,9 +24,5 @@ class User < ActiveRecord::Base
     else
       where(conditions).first
     end
-  end
-
-  def agree
-
   end
 end

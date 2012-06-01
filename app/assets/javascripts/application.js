@@ -13,3 +13,32 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+    validate_forms();
+    restrict_location();
+});
+
+function validate_forms(){
+    $('form').submit(function(){
+        var allow_submit = true;
+        form = $(this);
+        $('input[type=checkbox]', form).each(function(){
+            el = $(this);
+            if (el.attr('name').match(/\[agree\]/)){
+                if (el.attr('checked') == 'checked'){
+                    el.parent().removeClass('failed');
+                }
+                else{
+                    el.parent().addClass('failed');
+                    allow_submit = false;
+                }
+            }
+        });
+        return allow_submit;
+    });
+}
+
+function restrict_location(){
+
+}

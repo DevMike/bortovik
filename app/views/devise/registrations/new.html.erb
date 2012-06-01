@@ -8,6 +8,8 @@
     <%= f.input :email, :required => true %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
+    <%= f.input :country, :as => :select, :collection => country_collection %>
+    <%= f.input :settlement, :required => true %>
     <%= f.input :agree, :required => true, :label => 'I agree with terms', :input_html => {:type => 'checkbox'} %>
   </div>
 
