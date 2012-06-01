@@ -52,11 +52,18 @@ settlements_yaml = settlements_file.read
 countries_hash = YAML.load settlements_yaml
 
 countries_hash.each do |country_hash|
-  country = Country.create name:country_hash[:name], russian_name:country_hash[:russian_name]
-  country_hash[:regions].each do |region_hash|
-    region = country.regions.create name:region_hash[:name], russian_name:region_hash[:russian_name]
-    region_hash[:settlements].each do |settlement_hash|
-      region.settlements.create name:settlement_hash[:name], russian_name:settlement_hash[:russian_name]
+  country = Country.new name:country_hash[:name], russian_name:country_hash[:russian_name]
+  if country.valid?
+    country.save!
+    country_hash[:regions].each do |region_hash|
+      region = country.regions.build name:region_hash[:name], russian_name:region_hash[:russian_name]
+      if (region.valid?)
+        region.save!
+        region_hash[:settlements].each do |settlement_hash|
+          settlement = region.settlements.build name:settlement_hash[:name], russian_name:settlement_hash[:russian_name]
+          settlement.save! if settlement.valid?
+        end
+      end
     end
   end
 end
