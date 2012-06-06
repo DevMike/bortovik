@@ -40,5 +40,35 @@ function validate_forms(){
 }
 
 function restrict_location(){
+    $('#new_user select').live('change', function(){
+        var select = $(this);
+        var value = select.val();
+        var name = select.attr('name').match(/[^\[]+(?=\])/);
+        var urls = {
+            country: '/countries/' + value + '/regions',
+            region: '/regions/' + value + '/settlements'
+        };
+        var url = urls[name];
+        if (url == undefined) return;
+        if (value == "") return;
 
+        var ids = {
+            country: 'user_region',
+            region: 'user_settlement'
+        };
+
+        $.ajax({
+            url: url,
+            success: function(data){
+                var el = $("#" + ids[name]);
+                el.html('');
+                for (n in data){
+                    var option = $('<option></option>');
+                    option.attr('value', n);
+                    option.text(data[n]);
+                    option.clone().appendTo(el);
+                }
+            }
+        })
+    });
 }
