@@ -6,9 +6,9 @@
     = f.input :email, :required => true
     = f.input :password, :required => true
     = f.input :password_confirmation, :required => true
-    = f.input :country, :as => :select, :collection => country_collection
-    = f.input :region, :as => :select, :collection => region_collection
-    = f.input :settlement, :required => true, :as => :select, :collection => settlement_collection
+    = f.input :country, :collection => country_collection
+    = f.input :region, :collection => region_collection
+    = f.input :settlement, :required => true, :collection => settlement_collection
     = f.input :agree, :required => true, :label => 'I agree with terms', :input_html => {:type => 'checkbox'}
   .actions
     = f.button :submit, "Sign up"
