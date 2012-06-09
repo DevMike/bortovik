@@ -1,0 +1,6 @@
+= javascript_include_tag "application", :debug => Settings.system.enable_js_debug
+- if Rails.env.test?
+  :javascript
+    $.fx.off = true;
+
+= yield :js
