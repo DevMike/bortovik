@@ -13,3 +13,64 @@
   .actions
     = f.button :submit, "Sign up"
 = render :partial => "devise/shared/links"
+
+- content_for :js do
+  :javascript
+    $(document).ready(function(){
+        validate_forms();
+        restrict_location();
+    });
+
+    function validate_forms(){
+        $('form').submit(function(){
+            var allow_submit = true;
+            form = $(this);
+            $('input[type=checkbox]', form).each(function(){
+                el = $(this);
+                if (el.attr('name').match(/\[agree\]/)){
+                    if (el.attr('checked') == 'checked'){
+                        el.parent().removeClass('failed');
+                    }
+                    else{
+                        el.parent().addClass('failed');
+                        allow_submit = false;
+                    }
+                }
+            });
+            return allow_submit;
+        });
+    }
+
+    function restrict_location(){
+        $('#new_user select').live('change', function(){
+            var select = $(this);
+            var value = select.val();
+            var name = select.attr('name').match(/[^\[]+(?=\])/);
+            var urls = {
+                country: '/countries/' + value + '/regions',
+                region: '/regions/' + value + '/settlements'
+            };
+            var url = urls[name];
+            if (url == undefined) return;
+            if (value == "") return;
+
+            var ids = {
+                country: 'user_region',
+                region: 'user_settlement'
+            };
+
+            $.ajax({
+                url: url,
+                success: function(data){
+                    var el = $("#" + ids[name]);
+                    el.html('');
+                    for (n in data){
+                        var option = $('<option></option>');
+                        option.attr('value', n);
+                        option.text(data[n]);
+                        option.clone().appendTo(el);
+                    }
+                }
+            })
+        });
+    }
