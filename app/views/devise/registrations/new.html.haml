@@ -44,20 +44,22 @@
     function restrict_location(){
         $('#new_user select').live('change', function(){
             var select = $(this);
-            var value = select.val();
-            var name = select.attr('name').match(/[^\[]+(?=\])/);
-            var urls = {
-                country: '/countries/' + value + '/regions',
-                region: '/regions/' + value + '/settlements'
-            };
-            var url = urls[name];
+                value = select.val(),
+                name = select.attr('name').match(/[^\[]+(?=\])/),
+                ids = {
+                  country: 'user_region',
+                  region: 'user_settlement'
+                },
+                currentCountry = $("#user_country").val();
+                currentRegion = $("#user_region").val();
+                path = '/locations/';
+                urls = {
+                  country: path + currentCountry,
+                  region: path + currentCountry + '/' + currentRegion
+                },
+                url = urls[name];
             if (url == undefined) return;
             if (value == "") return;
-
-            var ids = {
-                country: 'user_region',
-                region: 'user_settlement'
-            };
 
             $.ajax({
                 url: url,

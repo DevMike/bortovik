@@ -2,13 +2,8 @@ Bortovik::Application.routes.draw do
 
   devise_for :users
 
-  resources :countries, :only => [] do
-    resources :regions, :only => [:index]
-  end
-
-  resources :regions, :only => [] do
-    resources :settlements, :only => [:index]
-  end
+  match 'locations/:country_id' => 'locations#get_collection', :as => :regions
+  match 'locations/:country_id/:region_id' => 'locations#get_collection', :as => :settlements
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
