@@ -3,15 +3,14 @@ class LocationsController < ApplicationController
 
   def get_collection
     if params[:region_id].present?
-      resource = Settlement
+      resource_class = Settlement
       param_to_find = 'region_id'
     else
-      resource = Region
+      resource_class = Region
       param_to_find = 'country_id'
     end
 
-    @list = resource.send("find_all_by_#{param_to_find}", params[param_to_find])
-    @list = Hash[*@list.map { |c| [c.id, c.name] }.flatten]
-    render json: @list
+    @list = resource_class.where(param_to_find => params[param_to_find])
+    render :json => @list.to_json(:only => [:id, :name])
   end
 end

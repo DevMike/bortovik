@@ -23,10 +23,10 @@
 
     function validate_forms(){
         $('form').submit(function(){
-            var allow_submit = true;
-            form = $(this);
+            var allow_submit = true,
+                form = $(this);
             $('input[type=checkbox]', form).each(function(){
-                el = $(this);
+                var el = $(this);
                 if (el.attr('name').match(/\[agree\]/)){
                     if (el.attr('checked') == 'checked'){
                         el.parent().removeClass('failed');
@@ -42,13 +42,12 @@
     }
 
     function restrict_location(){
-        $('#new_user select').live('change', function(){
+        $('#new_user select').on('change', function(){
             reload_items($(this));
         });
     }
 
     function reload_items(select){
-        console.log(select.attr('name'))
         name = select.attr('name').match(/[^\[]+(?=\])/),
         ids = {
           country: 'user_region',
@@ -63,25 +62,18 @@
         },
         url = urls[name];
         if (url == undefined) return;
-        //if (currentCountry == "" || currentRegion == "") return;
 
         $.ajax({
             url: url,
             success: function(data){
-                console.log(data)
                 var el = $("#" + ids[name]);
-                console.log(name)
-                console.log(el)
                 el.html('');
-                console.log('start')
                 var option = $('<option></option>');
-                for (n in data){
-                    option.attr('value', n);
-                    option.text(data[n]);
+                $.each(data, function() {
+                    option.attr('value', this['id']);
+                    option.text(this['name']);
                     option.clone().appendTo(el);
-                }
-
-                console.log('end')
+                });
 
                 if (name == 'country') reload_items($("#user_region"))
             }
