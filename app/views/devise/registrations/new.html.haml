@@ -43,36 +43,48 @@
 
     function restrict_location(){
         $('#new_user select').live('change', function(){
-            var select = $(this);
-                value = select.val(),
-                name = select.attr('name').match(/[^\[]+(?=\])/),
-                ids = {
-                  country: 'user_region',
-                  region: 'user_settlement'
-                },
-                currentCountry = $("#user_country").val();
-                currentRegion = $("#user_region").val();
-                path = '/locations/';
-                urls = {
-                  country: path + currentCountry,
-                  region: path + currentCountry + '/' + currentRegion
-                },
-                url = urls[name];
-            if (url == undefined) return;
-            if (value == "") return;
-
-            $.ajax({
-                url: url,
-                success: function(data){
-                    var el = $("#" + ids[name]);
-                    el.html('');
-                    for (n in data){
-                        var option = $('<option></option>');
-                        option.attr('value', n);
-                        option.text(data[n]);
-                        option.clone().appendTo(el);
-                    }
-                }
-            })
+            reload_items($(this));
         });
+    }
+
+    function reload_items(select){
+        console.log(select.attr('name'))
+        name = select.attr('name').match(/[^\[]+(?=\])/),
+        ids = {
+          country: 'user_region',
+          region: 'user_settlement'
+        },
+        currentCountry = $("#user_country").val();
+        currentRegion = $("#user_region").val();
+        path = '/locations/';
+        urls = {
+          country: path + currentCountry,
+          region: path + currentCountry + '/' + currentRegion
+        },
+        url = urls[name];
+        if (url == undefined) return;
+        //if (currentCountry == "" || currentRegion == "") return;
+
+        $.ajax({
+            url: url,
+            success: function(data){
+                console.log(data)
+                var el = $("#" + ids[name]);
+                console.log(name)
+                console.log(el)
+                el.html('');
+                console.log('start')
+                var option = $('<option></option>');
+                for (n in data){
+                    option.attr('value', n);
+                    option.text(data[n]);
+                    option.clone().appendTo(el);
+                }
+
+                console.log('end')
+
+                if (name == 'country') reload_items($("#user_region"))
+            }
+        })
+
     }
