@@ -6,12 +6,15 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :registerable, :confirmable,
-         :authentication_keys => [:login]
+         :registerable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :login,:name, :email, :password, :password_confirmation, :remember_me, :agree, :settlement
-  attr_accessor :login, :agree, :country, :region, :settlement
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :settlement_id
+  attr_accessor :agree, :country_id, :region_id
 
-  validates_presence_of :settlement
+  validates_presence_of :settlement_id, :name
+  validates_uniqueness_of :name
+
+  #delegate :country, :to => :country
+  accepts_nested_attributes_for :settlement
 end
