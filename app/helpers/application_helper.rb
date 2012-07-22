@@ -4,10 +4,14 @@ module ApplicationHelper
   end
 
   def model_collection model
-    model.camelize.constantize.all.map { |c| [c.name, c.id] }
+    collection_for model.camelize.constantize.all
   end
 
   def self.respond_to?(method_sym, include_private = false)
     method_sym.to_s =~ /(.*?)_collection$/ ? true : super
+  end
+
+  def collection_for(scope)
+    scope.map { |c| [c.name, c.id] }
   end
 end

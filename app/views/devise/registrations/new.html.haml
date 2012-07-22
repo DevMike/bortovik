@@ -4,11 +4,11 @@
   .inputs
     = f.input :name, :autofocus => true
     = f.input :email, :required => true
-    = f.input :password, :required => true
-    = f.input :password_confirmation, :required => true
-    = f.input :country_id, :collection => country_collection
-    = f.input :region_id, :collection => region_collection
-    = f.input :settlement_id, :collection => settlement_collection
+    = f.input :password, :required => true, :input_html => { :autocomplete => "off" }
+    = f.input :password_confirmation, :required => true, :input_html => { :autocomplete => "off" }
+    = f.input :country_id, :collection => country_collection, :include_blank => true, :selected => selected_item(resource, :country)
+    = f.input :region_id, :collection => selected_collection(resource, :region), :selected => selected_item(resource, :region)
+    = f.input :settlement_id, :collection => selected_collection(resource, :settlement)
     = f.input :agree, :required => true, :label => 'I agree with terms', :input_html => {:type => 'checkbox'}
   .actions
     = f.button :submit, "Sign up"
