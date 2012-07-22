@@ -5,4 +5,6 @@ class Settlement < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :russian_name, :presence => true
+
+  delegate :country, :to => :region
 end

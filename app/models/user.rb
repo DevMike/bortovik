@@ -15,6 +15,5 @@ class User < ActiveRecord::Base
   validates_presence_of :settlement_id, :name
   validates_uniqueness_of :name
 
-  #delegate :country, :to => :country
-  accepts_nested_attributes_for :settlement
+  delegate :region, :country, :to => :settlement
 end
