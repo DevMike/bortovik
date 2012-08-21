@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
       param_to_find = 'country_id'
     end
 
-    @list = resource_class.where(param_to_find => params[param_to_find])
+    @list = resource_class.where(param_to_find => params[param_to_find]).order("#{resource_class.tableize}.name")
     render :json => @list.to_json(:only => [:id, :name])
   end
 end

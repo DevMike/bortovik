@@ -1,8 +1,8 @@
-# Read about factories at http://github.com/thoughtbot/factory_girl
+# encoding: UTF-8
 
 FactoryGirl.define do
   factory :country do
-      name "MyString"
-      russian_name "MyString"
-    end
+    sequence(:name) {|n| "Ukraine-#{n}"}
+    sequence(:russian_name) {|n| "Украина-#{n}"}
+  end
 end
