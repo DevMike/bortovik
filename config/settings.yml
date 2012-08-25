@@ -1,12 +1,13 @@
-settings:
-  system:
-    locales: [en]
-    default_locale: en
-    default_country: UA
-    default_timezone: Kyiv
+system:
+  locales: [en]
+  default_locale: en
+  default_country: UA
+  default_timezone: Kyiv
+defaults:
+  settlement: Harkov
 
-  global:
-    hosts:
-      current: bortovik.net
-    names:
-      current: bortovik.net
+global:
+  hosts:
+    current: bortovik.net
+  names:
+    current: bortovik.net
