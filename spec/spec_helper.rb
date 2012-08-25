@@ -81,3 +81,23 @@ def should_render_template_with_error(template, message)
   response.should render_template(template)
   flash[:alert].should == message
 end
+
+def fill_in_form(prefix, attributes, inputs, options = {})
+  if inputs[:text]
+    inputs[:text].each do |field|
+      fill_in "#{prefix}_#{field}", :with=> (options[:empty_set] ? '' : @attributes[field])
+    end
+  end
+
+  if inputs[:select]
+    inputs[:select].each do |field|
+      select (options[:empty_set] ? '' : @attributes[field]), :from => "#{prefix}_#{field}"
+    end
+  end
+
+  if inputs[:radio]
+    inputs[:radio].each do |value|
+      choose value
+    end
+  end
+end
