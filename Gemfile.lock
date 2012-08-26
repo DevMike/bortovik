@@ -329,6 +329,7 @@ DEPENDENCIES
   spork (~> 1.0.0r3)
   syntax (~> 1.0.0)
   therubyracer (~> 0.10.1)
+  thin
   timecop
   uglifier (~> 1.2.6)
   whenever (~> 0.7.3)

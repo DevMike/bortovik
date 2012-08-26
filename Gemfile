@@ -64,7 +64,9 @@ gem "enumerize", "~> 0.3.0"
 # @TODO: could be enabled later
 #gem "rails-settings-cached"
 
-# Deploy with Capistrano
+# Deploy
+# heroku require it
+gem 'thin'
 # @TODO: could be enabled later
 #gem "capistrano", "~> 2.11.2"
 #gem "capistrano-ext", "~> 1.2.1"
