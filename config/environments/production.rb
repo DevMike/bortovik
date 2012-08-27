@@ -51,4 +51,9 @@ Bortovik::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  #heroku basic authentication
+  config.middleware.insert_after(::Rack::Lock, "::Rack::Auth::Basic", "Production") do |u, p|
+    [u, p] == [ENV['BA_USERNAME'], ENV['BA_PASSWORD']]
+  end
 end
