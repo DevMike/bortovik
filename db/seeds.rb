@@ -52,16 +52,19 @@ settlements_yaml = settlements_file.read
 countries_hash = YAML.load settlements_yaml
 
 countries_hash.each do |country_hash|
-  country = Country.new name:country_hash[:name], russian_name:country_hash[:russian_name]
-  if country.valid?
-    country.save!
-    country_hash[:regions].each do |region_hash|
-      region = country.regions.build name:region_hash[:name], russian_name:region_hash[:russian_name]
-      if (region.valid?)
-        region.save!
-        region_hash[:settlements].each do |settlement_hash|
-          settlement = region.settlements.build name:settlement_hash[:name], russian_name:settlement_hash[:russian_name]
-          settlement.save! if settlement.valid?
+  # @TODO: heroku rows restriction
+  if %w(Russia Ukraine Belarus).include?(country_hash[:name])
+    country = Country.new name:country_hash[:name], russian_name:country_hash[:russian_name]
+    if country.valid?
+      country.save!
+      country_hash[:regions].each do |region_hash|
+        region = country.regions.build name:region_hash[:name], russian_name:region_hash[:russian_name]
+        if region.valid?
+          region.save!
+          region_hash[:settlements].each do |settlement_hash|
+            settlement = region.settlements.build name:settlement_hash[:name], russian_name:settlement_hash[:russian_name]
+            settlement.save! if settlement.valid?
+          end
         end
       end
     end
