@@ -4,9 +4,9 @@ SimpleForm.setup do |config|
   # any of them, change the order, or even add your own components to the stack.
   config.wrappers :tag => :div, :class => :input do |b|
     b.use :placeholder
-    b.use :error, :tag => :span, :class => :error
+    b.use :error, :wrap_with => { :tag => :span, :class => :error }
     b.use :label_input
-    b.use :hint, :tag => :span, :class => :hint
+    b.use :hint, :wrap_with => { :tag => :span, :class => :hint }
     b.use :readonly
   end
 
