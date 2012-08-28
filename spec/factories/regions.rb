@@ -1,9 +1,9 @@
-# Read about factories at http://github.com/thoughtbot/factory_girl
+# encoding: UTF-8
 
 FactoryGirl.define do
   factory :region do
-      name "MyString"
-      russian_name "MyString"
-      country nil
-    end
+    sequence(:name) {|n| "Kharvovskaya-#{n}"}
+    sequence(:russian_name) {|n| "Харьковская-#{n}"}
+    association :country, :factory=>:country
+  end
 end

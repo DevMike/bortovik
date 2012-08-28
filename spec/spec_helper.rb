@@ -25,6 +25,15 @@ Spork.prefork do
 
   Capybara.server_port = 9887 + ENV['TEST_ENV_NUMBER'].to_i
 
+  # If use chrome download chromedriver from http://code.google.com/p/chromedriver/downloads/list
+  # put it to appropriated place('/usr/bin' for linux)
+  # and make executable - sudo chmod +x /usr/bin/chromedriver
+  # don't forget to add following line to your local.yml:  browser: :chrome
+  browser = Settings.browser || :firefox
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, :browser => browser)
+  end
+
   RSpec.configure do |config|
     config.mock_with :rspec
     config.use_transactional_fixtures = false
@@ -80,4 +89,34 @@ alias :should_have_error_for :should_have_errors_for
 def should_render_template_with_error(template, message)
   response.should render_template(template)
   flash[:alert].should == message
+end
+
+def fill_in_form(prefix, attributes, inputs, options = {})
+  if inputs[:text]
+    inputs[:text].each do |field|
+      fill_in "#{prefix}_#{field}", :with=> (options[:empty_set] ? '' : attributes[field])
+    end
+  end
+
+  if inputs[:select]
+    inputs[:select].each do |field|
+      select (options[:empty_set] ? '' : attributes[field]), :from => "#{prefix}_#{field}"
+    end
+  end
+
+  if inputs[:radio]
+    inputs[:radio].each do |value|
+      choose value
+    end
+  end
+
+  if inputs[:checkbox]
+    inputs[:checkbox].each do |value|
+      check value
+    end
+  end
+end
+
+def submit_form
+  find('input[@name=commit]').click
 end
