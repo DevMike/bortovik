@@ -1,10 +1,11 @@
-# Read about factories at http://github.com/thoughtbot/factory_girl
+# encoding: UTF-8
 
 FactoryGirl.define do
-  factory :user do |u|
-    u.name 'ivan'
-    u.email 'ivan@gmail.com'
-    u.password '111111'
-    u.settlement 1
+  factory :user do
+    name 'Иван Иванов'
+    sequence(:email) {|n| "user#{n}@example.com" }
+    password '123456'
+    password_confirmation '123456'
+    association :settlement, :factory=>:region
   end
 end
