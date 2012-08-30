@@ -2,10 +2,11 @@
 
 FactoryGirl.define do
   factory :user do
-    name 'Иван Иванов'
+    sequence(:name) {|n| "Иван Иванов-#{n}" }
     sequence(:email) {|n| "user#{n}@example.com" }
     password '123456'
     password_confirmation '123456'
-    association :settlement, :factory=>:region
+    confirmed_at Time.now
+    association :settlement, :factory=>:settlement
   end
 end

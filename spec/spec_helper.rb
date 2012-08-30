@@ -45,6 +45,7 @@ Spork.prefork do
     end
 
     config.before(:each) do
+      DatabaseCleaner.clean
       DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
       DatabaseCleaner.start
     end
@@ -119,4 +120,8 @@ end
 
 def submit_form
   find('input[@name=commit]').click
+end
+
+def unselected_currencies(currency=nil)
+  User::CURRENCIES.reject{|c| c == (currency || Money.default_currency.to_s)}
 end

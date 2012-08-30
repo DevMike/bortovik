@@ -13,3 +13,10 @@
     %p.alert= alert
     = yield
     = render "/layouts/javascripts"
+    %div{ :style => "position:absolute; top:30px; right:50px;" }
+      - User::CURRENCIES.each do |currency|
+        - if currency == Money.default_currency.to_s
+          = currency
+        - else
+          = link_to currency, url_for(:currency=> currency)
+

@@ -51,6 +51,9 @@ gem "rack-rewrite", "~> 1.2.1"
 # AR enum attributes
 gem "enumerize", "~> 0.3.0"
 
+#monetize
+gem "money-rails", "~> 0.4.0"
+
 # Database-backed asynchronous priority queue system
 # @TODO: could be enabled later
 #gem "delayed_job", "~> 3.0.1"

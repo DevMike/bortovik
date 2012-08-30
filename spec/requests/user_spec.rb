@@ -71,7 +71,7 @@ describe "Registrations" do
 
       all('.error').count.should == 0
       user = User.last
-      attributes.reject{|k,_| [:password, :password_confirmation].include?(k) }.each do |attr_name, value|
+      attributes.reject{|k,_| [:password, :password_confirmation, :confirmed_at].include?(k) }.each do |attr_name, value|
         user[attr_name].should == value
       end
       user.country.should == settlement.region.country

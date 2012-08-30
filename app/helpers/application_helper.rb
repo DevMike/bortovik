@@ -12,6 +12,6 @@ module ApplicationHelper
   end
 
   def collection_for(scope)
-    scope.map { |c| [c.name, c.id] }
+    scope.sort_by(&:name).map{ |c| [c.name, c.id] }
   end
 end

@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  include Enumerize
+  CURRENCIES = %w(UAH RUB EUR USD)
+  enumerize :preferred_currency, :in => CURRENCIES
+
   belongs_to :settlement
 
   # Include default devise modules. Others available are:
@@ -16,4 +20,14 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :name
 
   delegate :region, :country, :to => :settlement
+
+  class << self
+    def current_user
+      Thread.current[:current_user]
+    end
+
+    def current_user=(user)
+      Thread.current[:current_user] = user
+    end
+  end
 end

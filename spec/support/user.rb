@@ -25,8 +25,3 @@ module UserMacros
     end
   end
 end
-
-def create_user_notifications(user, unread, read)
-  FactoryGirl.create_list(:notification_read, read, :user=>user)
-  FactoryGirl.create_list(:notification, unread, :user=>user)
-end

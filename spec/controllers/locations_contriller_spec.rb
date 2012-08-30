@@ -4,7 +4,7 @@ require 'spec_helper'
 describe LocationsController do
   it "should return all country regions in appropriated order" do
     regions = FactoryGirl.create_list(:region, 3,
-                                      :country => FactoryGirl.create(:country)).sort_by(&:name).reverse
+                                      :country => FactoryGirl.create(:country)).sort_by(&:name)
     FactoryGirl.create_list(:region, 3,
                             :country => FactoryGirl.create(:country, :name => 'Russia'))
 
@@ -15,7 +15,7 @@ describe LocationsController do
 
   it "should return all region settlements in appropriated order" do
     settlements = FactoryGirl.create_list(:settlement, 3,
-                                          :region => FactoryGirl.create(:region)).sort_by(&:name).reverse
+                                          :region => FactoryGirl.create(:region)).sort_by(&:name)
     FactoryGirl.create_list(:settlement, 3,
                             :region => FactoryGirl.create(:region, :name => 'Moscow'))
 
