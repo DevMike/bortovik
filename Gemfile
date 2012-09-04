@@ -120,3 +120,6 @@ group :test do
   gem "email_spec", "~> 1.2.1"
   gem 'timecop'
 end
+
+#parser gems
+gem 'mechanize', "~> 2.5.1"
