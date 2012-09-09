@@ -12,8 +12,16 @@ en:
       routing_error: Page not found
       internal_server_error: Internal server error
 
+  char_counter:
+    char_text: 'chars left'
+    char_limit_exceeded_text: 'chars more than'
+
   locale:
     en: English
+
+  home:
+    contact_message:
+      greetings: "Thank you, we'll get back to you."
 
   # https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/en-US.yml
   date:
