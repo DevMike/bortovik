@@ -7,6 +7,7 @@ FactoryGirl.define do
     password '123456'
     password_confirmation '123456'
     confirmed_at Time.now
+    preferred_currency 'UAH'
     association :settlement, :factory=>:settlement
   end
 end
