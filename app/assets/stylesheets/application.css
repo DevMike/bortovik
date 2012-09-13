@@ -12,5 +12,9 @@
  *= require_tree .
 */
 form .failed{
-    border: 1px solid #f00;
+  border: 1px solid #f00;
+}
+
+.hidden {
+  display: none;
 }

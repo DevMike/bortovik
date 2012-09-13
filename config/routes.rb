@@ -5,6 +5,11 @@ Bortovik::Application.routes.draw do
   match 'locations/:country_id' => 'locations#get_collection', :as => :regions
   match 'locations/:country_id/:region_id' => 'locations#get_collection', :as => :settlements
 
+  scope :controller => :home do
+    get 'contact' => :contact, :as => :contact
+    post 'contact_message' => :contact_message
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

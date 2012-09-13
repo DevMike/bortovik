@@ -1,0 +1,10 @@
+- content_for :js do
+  :javascript
+    $(function () {
+      $("#{selector}").counterBinder(1000);
+    });
+
+.counter
+  .count-text
+  .char-text.hidden= t(:"char_counter.char_text")
+  .limit-exceeded-text.hidden= t(:"char_counter.char_limit_exceeded_text")
