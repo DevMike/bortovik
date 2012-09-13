@@ -12,3 +12,6 @@ global:
     current: bortovik.net
   names:
     current: bortovik.net
+
+mail:
+  contact_mail: zarechenskiy.mihail@gmail.com #will be overwritten later
