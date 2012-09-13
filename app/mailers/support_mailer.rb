@@ -6,7 +6,7 @@ class SupportMailer < ActionMailer::Base
   def contact_message(message)
     @message = message
 
-    mail :from => @message.email,
-         :subject => 'Contact message'
+    mail from: @message.email,
+         subject: 'Contact message'
   end
 end
