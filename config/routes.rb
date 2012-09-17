@@ -1,5 +1,17 @@
 Bortovik::Application.routes.draw do
 
+  ##
+  # Admin routes
+  ##
+
+  # rescue when tables are not exists yet (in case rake db:setup etc)
+  begin
+    ActiveAdmin.routes(self)
+  rescue ActiveRecord::StatementInvalid => e
+    puts "--------------\n #{e.message} ----------------\n"
+  end
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users
 
   match 'locations/:country_id' => 'locations#get_collection', :as => :regions

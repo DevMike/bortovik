@@ -70,3 +70,5 @@ countries_hash.each do |country_hash|
     end
   end
 end
+
+AdminUser.create!({:email => 'mihail.zarechenskiy@gmail.com', :password => '80rt0v0j', :password_confirmation => '80rt0v0j'}, :without_protection => true)

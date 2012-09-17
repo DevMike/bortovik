@@ -1,0 +1,1 @@
+require 'patches/simple_form/errors'
