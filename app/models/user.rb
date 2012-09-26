@@ -3,8 +3,6 @@ class User < ActiveRecord::Base
   CURRENCIES = %w(UAH RUB EUR USD)
   enumerize :preferred_currency, :in => CURRENCIES
 
-  belongs_to :settlement
-
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -15,6 +13,11 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :settlement_id, :preferred_currency
   attr_accessor :agree, :country_id, :region_id
+
+  belongs_to :settlement
+
+  scope :confirmed, where("#{table_name}.confirmation_token IS NOT NULL")
+  scope :unconfirmed, where(:confirmation_token => nil)
 
   validates_presence_of :settlement_id, :name
   validates_uniqueness_of :name

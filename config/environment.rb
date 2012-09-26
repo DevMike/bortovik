@@ -1,8 +1,11 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 require 'bortovik'
-if defined?(PhusionPassenger)
-  require 'passenger_postgress'
+
+Rake.application.instance_eval do
+  def self.display_error_message(ex)
+    raise
+  end
 end
 
 Bortovik::Application.configure do
@@ -13,6 +16,5 @@ end
 # Initialize the rails application
 Bortovik::Application.initialize!
 
-require 'patches/activeadmin/resource_controller'
-require 'patches/activeadmin/locale'
-require 'patches/activeadmin/comment'
+require 'patches/activeadmin'
+require 'patches/simple_form'

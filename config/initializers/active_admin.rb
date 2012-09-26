@@ -1,7 +1,6 @@
 # hacking in support for array-based scopes
 # see: https://github.com/gregbell/active_admin/issues/1158
 class Kaminari::PaginatableArray
-
   def reorder(*args)
     return self if args.blank? || args.all? {|a| a.blank?}
     attr_name = args.first
@@ -25,7 +24,7 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "bortovik.net"
 
-  # Set the link url for the title. For example, to take 
+  # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
   # config.site_title_link = "/"
@@ -117,7 +116,5 @@ ActiveAdmin.setup do |config|
   #   config.register_stylesheet 'my_stylesheet.css'
   #
   # To load a javascript file:
-  config.register_javascript 'lib/codemirror/codemirror.js'
-  config.register_javascript 'lib/codemirror/xml.js'
-  config.register_javascript 'lib/codemirror/markdown.js'
+  # config.register_javascript 'lib/codemirror/codemirror.js'
 end
