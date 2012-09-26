@@ -44,7 +44,7 @@ gem "mini_magick", "~> 3.4"
 gem "kaminari", "~> 0.13.0"
 
 # admin backend
-gem "activeadmin", "~> 0.4.4"
+gem "activeadmin", "~> 0.5.0"
 
 gem "rack-rewrite", "~> 1.2.1"
 
