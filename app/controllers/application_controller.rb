@@ -5,11 +5,6 @@ class ApplicationController < ActionController::Base
   layout Proc.new { |controller| controller.request.xhr? ? false : 'application'}
 
   protected
-
-  def set_current_user
-    User.current_user = current_user
-  end
-
   def set_currency
     if params[:currency]
       MoneyRails.default_currency = params[:currency]
