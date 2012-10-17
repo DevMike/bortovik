@@ -22,9 +22,4 @@ class ApplicationController < ActionController::Base
   def stored_location_for(resource_or_scope)
     resource_or_scope.is_a?(AdminUser) ? super : nil
   end
-
-  def after_sign_in_path_for(resource_or_scope)
-    resource_or_scope.is_a?(AdminUser) ? super : dashboard_path
-  end
-
 end
