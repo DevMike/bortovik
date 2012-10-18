@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   #redefine default devise methods
   def after_sign_in_path_for(resource_or_scope)
-    admin_dashboard_path and return if resource_or_scope == :admin_user
+    admin_dashboard_path and return if resource_or_scope.is_a?(AdminUser)
     MoneyRails.default_currency = current_user.preferred_currency if current_user.preferred_currency
     super
   end
