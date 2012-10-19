@@ -3,9 +3,6 @@ ActiveAdmin.register CarBrand do
 
   index do
     column :name
-    column do |m|
-      link_to('Models', admin_car_models_path)
-    end
     default_actions
   end
 

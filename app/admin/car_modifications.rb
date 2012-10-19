@@ -1,9 +1,12 @@
 ActiveAdmin.register CarModification do
   menu :label => 'Car Modifications', :parent => 'Cars', :priority => 3
 
+  filter :car_model, :as => :select, :collection => CarModel.order(:name).map(&:name)
+
   index do
     column :name
     column :car_model
+    column :car_brand
     default_actions
   end
 

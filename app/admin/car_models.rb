@@ -1,12 +1,11 @@
 ActiveAdmin.register CarModel do
   menu :label => 'Car Models', :parent => 'Cars', :priority => 2
 
+  filter :car_brand, :as => :select, :collection => CarBrand.order(:name).map(&:name)
+
   index do
     column :name
     column :car_brand
-    column do |m|
-      link_to('Modifications', admin_car_modifications_path)
-    end
     default_actions
   end
 

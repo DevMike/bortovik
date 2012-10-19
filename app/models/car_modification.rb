@@ -6,4 +6,6 @@ class CarModification < ActiveRecord::Base
   has_many :car_features, through: :car_feature_car_modifications
 
   validates_presence_of :name
+
+  delegate :car_brand, :to => :car_model
 end
