@@ -8,4 +8,9 @@ class CarModification < ActiveRecord::Base
   validates_presence_of :name
 
   delegate :car_brand, :to => :car_model
+
+  search_method :car_brand_eq, :splat_param => true
+  def self.car_brand_eq(id)
+    joins([:car_model => :car_brand]).where("#{CarBrand.table_name}.id = ?", id)
+  end
 end
