@@ -16,15 +16,16 @@ class AutosPostsImporter
     private
     def get_tree
       get_all_categories.map do |category|
-        category[:posts] = get_category_posts(category[:id])
-        category.to_hash
+        category['posts'] = get_category_posts(category['id'])
+        category.delete('id')
+        category
       end
     end
 
     def get_category_posts(category_id)
       query = "
         SELECT
-          p.post_title AS title,
+          p.post_title AS name,
           p.post_content AS content,
           p.post_name AS slug
         FROM wp_posts p
@@ -32,12 +33,7 @@ class AutosPostsImporter
         WHERE tr.term_taxonomy_id=#{category_id}
         AND p.post_type='post'
       "
-      result = database.query query
-      posts = []
-      result.each_hash do |post|
-        posts << clean_hash(post)
-      end
-      posts
+      get_hash_from_database(query)
     end
 
     def get_all_categories
@@ -47,28 +43,32 @@ class AutosPostsImporter
           tx.term_taxonomy_id AS id,
           t.name,
           t.slug,
-          tx.description
+          tx.description AS content
         FROM wp_terms t
         LEFT JOIN wp_term_taxonomy tx ON (t.term_id=tx.term_id)
         WHERE tx.taxonomy='category'
         AND t.slug IN (#{category_slugs})
       "
+      get_hash_from_database(query)
+    end
+
+    def get_hash_from_database(query)
       result = database.query query
-      categories = []
-      result.each_hash do |category|
-        categories << clean_hash(category)
+      array = []
+      result.each_hash do |hash|
+        array << clean_hash(hash)
       end
-      categories
+      array
     end
 
     def clean_hash(hash)
-      new_hash = {}
-      hash.each_pair do |key, value|
-        new_key = key.encode('UTF-8', 'Windows-1251').to_sym
-        new_value = value.encode('UTF-8', 'Windows-1251')
-        new_hash[new_key] = new_value
+      new_hash = hash.map do |key, value|
+        [
+          key.encode('UTF-8', 'Windows-1251'),
+          value.encode('UTF-8', 'Windows-1251')
+        ]
       end
-      new_hash
+      Hash[new_hash]
     end
 
     def database
