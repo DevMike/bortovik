@@ -110,6 +110,7 @@ group :development do
   gem "bullet"
   # Local mailer
   gem "mailcatcher", "~> 0.5.8"
+  gem "mysql"
 end
 
 group :test do
