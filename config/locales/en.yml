@@ -5,6 +5,14 @@ en:
     prefix: 'bortovik.net - '
     postfix: ' - bortovik.net'
     processing: Processing...
+    save: Save
+    confirm: Are you sure?
+    back: Back
+
+  email:
+    contact_message: Contact message
+    welcome: "Welcome, %{who}!"
+    hello: "Hello %{who}!"
 
   page_title:
     errors:
@@ -22,6 +30,23 @@ en:
   home:
     contact_message:
       greetings: "Thank you, we'll get back to you."
+    register: Register
+    edit_registration: Edit registration
+    login: Log in
+    logout: Log out
+    contact_us: Contact us
+
+  users:
+    password_hint: leave it blank if you don't want to change it
+    current_password_hint: we need your current password to confirm your changes
+    remove: Cancel my account
+    register: Register
+
+  sessions:
+    sign_in: Sign in
+    sign_up: Sign up
+    forgot_password: Forgot your password?
+    receive_confirmation: Didn't receive confirmation instructions?
 
   # https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/en-US.yml
   date:
@@ -222,7 +247,44 @@ en:
       carrierwave_integrity_error: This was not an allowed file type (please choose a picture)
 
   activerecord:
-    models:
+    attributes:
+      car_brand:
+        name: Name
+        description: Description
+      car_feature:
+        name: Car Feature
+      car_feature_car_modificaiton:
+        value: Value
+      car_feature_category:
+        name: Car feature category
+      car_model:
+        name: Name
+        description: Description
+      car_modificaiton:
+        name: Name
+        description: Description
+      contact_message:
+        name: Name
+        email: Email
+        description: Description
+        subject: Subject
+      country:
+        name: Name
+      region:
+        name: Name
+      settlement:
+        name: Name
+      user:
+        name: Name
+        email: Email
+        password: Password
+        password_confirmation: Password confirmation
+        remember_me: Remember me
+        settlement_id: City
+        preferred_currency: Preferred currency
+        agree: Agree with terms
+        country_id: Country
+        region_id: Region
 
     errors:
       models:

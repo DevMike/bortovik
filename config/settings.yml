@@ -1,6 +1,6 @@
 system:
   locales: [en]
-  default_locale: en
+  default_locale: ru
   default_country: UA
   default_timezone: Kyiv
 
