@@ -13,27 +13,32 @@ module Seeder
   class Locations
     class << self
       include Seeder::Common
+      LOCATION_MODELS = [Country, :regions, :settlements]
+
       def seed
         countries_hash = load_yaml(File.dirname(__FILE__) + '/seed/settlements.yml')
+        # @TODO: heroku rows restriction
+        countries_hash.map! do |country_hash|
+          country_hash if %w(Russia Ukraine Belarus).include?(country_hash[:name])
+        end.compact!
 
-        countries_hash.each do |country_hash|
-          # @TODO: heroku rows restriction
-          if %w(Russia Ukraine Belarus).include?(country_hash[:name])
-            country = Country.new name:country_hash[:name], russian_name:country_hash[:russian_name]
-            if country.valid?
-              country.save!
-              country_hash[:regions].each do |region_hash|
-                region = country.regions.build name:region_hash[:name], russian_name:region_hash[:russian_name]
-                if region.valid?
-                  region.save!
-                  region_hash[:settlements].each do |settlement_hash|
-                    settlement = region.settlements.build name:settlement_hash[:name], russian_name:settlement_hash[:russian_name]
-                    settlement.save! if settlement.valid?
-                  end
-                end
-              end
-            end
+        Country.transaction do
+          process_locations(countries_hash)
+        end
+      end
+
+      private
+      def process_locations(locations, entity = nil, depth = 0)
+        current_model = LOCATION_MODELS[depth]
+        new_model = LOCATION_MODELS[depth + 1]
+        locations.each do |location_hash|
+          create_params = {name: location_hash[:name], russian_name: location_hash[:russian_name]}
+          if entity.nil?
+            new_entity = current_model.create!(create_params)
+          else
+            new_entity = entity.send(current_model).create!(create_params)
           end
+          process_locations(location_hash[new_model], new_entity, depth + 1) if depth < LOCATION_MODELS.length - 1
         end
       end
     end
@@ -48,7 +53,9 @@ module Seeder
 
       def seed
         cars_hash = load_yaml(File.dirname(__FILE__) + '/seed/cars.yml')
-        create_cars(nil, nil, cars_hash)
+        CarBrand.transaction do
+          create_cars(nil, nil, cars_hash)
+        end
       end
 
       private
