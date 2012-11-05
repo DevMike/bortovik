@@ -1,5 +1,5 @@
 class CarBrand < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :description
 
   has_many :car_models, dependent: :destroy
 

@@ -1,5 +1,5 @@
 class CarModification < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :description
 
   belongs_to :car_model
   has_many :car_feature_car_modifications, dependent: :destroy
