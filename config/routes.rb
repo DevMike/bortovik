@@ -1,5 +1,7 @@
 Bortovik::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   ##
   # Admin routes
   ##

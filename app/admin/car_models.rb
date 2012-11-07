@@ -26,6 +26,7 @@ ActiveAdmin.register CarModel do
   form do |f|
     f.inputs "Details" do
       f.input :name
+      f.input :description, :as => :ckeditor
     end
     f.buttons
   end
