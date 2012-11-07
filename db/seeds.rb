@@ -68,7 +68,9 @@ module Seeder
           end
         end
         content.each_pair do |key, value|
-          if depth < CAR_MODELS.length - 1 || (Rails.env.test? && depth==1)
+          #@TODO: after seed optimization replace with following
+          # if depth < CAR_MODELS.length - 1 || (Rails.env.test? && depth==1)
+          if depth < CAR_MODELS.length - 1 || depth==10
             create_cars(new_entity, key, value, depth + 1)
           else
             create_feature_category(new_entity, key, value)
