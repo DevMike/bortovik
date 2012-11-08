@@ -111,6 +111,8 @@ group :development do
   # Local mailer
   gem "mailcatcher", "~> 0.5.8"
   gem "mysql"
+  # for debugging
+  gem 'pry'
 end
 
 group :test do
@@ -127,3 +129,5 @@ end
 
 #parser gems
 gem 'mechanize', "~> 2.5.1"
+#unicode support
+gem 'unicode'
