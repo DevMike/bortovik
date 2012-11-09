@@ -4,4 +4,12 @@ class AdminUser < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
+
+  def self.current_user
+    Thread.current[:current_admin_user]
+  end
+
+  def self.current_user= user
+    Thread.current[:current_admin_user] = user
+  end
 end

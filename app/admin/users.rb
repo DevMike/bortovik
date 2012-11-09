@@ -11,11 +11,12 @@ ActiveAdmin.register User do
   scope :confirmed
   scope :unconfirmed
 
-  member_action :login, :method => :get do
-    user = User.find(params[:id])
-    sign_in(user, :bypass => true)
-    redirect_to dashboard_url, :notice => "You have logged as #{user}"
-  end
+  #@TODO: ability logging as a user from the admin part
+  #member_action :login, :method => :get do
+  #  user = User.find(params[:id])
+  #  sign_in(user, :bypass => true)
+  #  redirect_to dashboard_url, :notice => "You have logged as #{user}"
+  #end
 
   index do
     column :id
