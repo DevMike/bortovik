@@ -7,6 +7,7 @@ describe Region do
 
     it { should belong_to :country }
     it { should have_many :settlements }
+    it { should validate_presence_of :country_id }
     it_behaves_like "locations"
   end
 end
