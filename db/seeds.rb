@@ -149,12 +149,15 @@ module Seeder
 
       def smart_key_search(search_key, hash)
         search_key = Unicode::downcase(search_key)
+
         key = hash.keys.detect do |hash_key|
           prepare_pattern = Unicode::downcase(hash_key).gsub(/\s+/, '\s*')
           pattern = Regexp.new(prepare_pattern)
           search_key =~ pattern
         end
+
         return key unless key.nil?
+
         hash.keys.detect do |hash_key|
           prepare_pattern = search_key.sub(/^.+?\s+/, '').gsub(/\s+/, '\s*')
           pattern = Regexp.new(prepare_pattern)
@@ -167,9 +170,8 @@ module Seeder
   class Starter
     class << self
       def seed
-        #TODO: uncomment this
-        #create_app_settings!
-        #Locations.seed
+        create_app_settings!
+        Locations.seed
         Cars.seed
       end
 

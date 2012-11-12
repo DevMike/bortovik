@@ -7,6 +7,7 @@ class AutosPostsImporter
     DB_NAME = 'intern_bortovik'
     DB_USER = 'intern_readonly'
     DB_PASSWORD = 'changeme'
+    CATEGORY_SLUGS = "'bmw', 'vaz', 'opel', 'ford', 'daewoo', 'renault', 'chevrolet', 'toyota'"
 
     def execute
       @result = get_tree
@@ -17,8 +18,7 @@ class AutosPostsImporter
     def get_tree
       get_all_categories.map do |category|
         category['posts'] = get_category_posts(category['id'])
-        category.delete('id')
-        category
+        category.tap{|c| c.delete('id') }
       end
     end
 
@@ -37,7 +37,6 @@ class AutosPostsImporter
     end
 
     def get_all_categories
-      category_slugs = "'bmw', 'vaz', 'opel', 'ford', 'daewoo', 'renault', 'chevrolet', 'toyota'"
       query = "
         SELECT
           tx.term_taxonomy_id AS id,
@@ -47,7 +46,7 @@ class AutosPostsImporter
         FROM wp_terms t
         LEFT JOIN wp_term_taxonomy tx ON (t.term_id=tx.term_id)
         WHERE tx.taxonomy='category'
-        AND t.slug IN (#{category_slugs})
+        AND t.slug IN (#{CATEGORY_SLUGS})
       "
       get_hash_from_database(query)
     end
