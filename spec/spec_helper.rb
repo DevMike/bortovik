@@ -22,6 +22,7 @@ Spork.prefork do
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+  Dir[Rails.root.join("spec/models/shared_examples/*.rb")].each {|f| require f}
 
   Capybara.server_port = 9887 + ENV['TEST_ENV_NUMBER'].to_i
 
