@@ -4,8 +4,8 @@ describe Settlement do
   context 'attributes' do
     subject { FactoryGirl.create :settlement }
 
-    it { should validate_presence_of :name }
-    it { should validate_presence_of :russian_name}
     it { should belong_to :region }
+    it { should validate_presence_of :region_id }
+    it_behaves_like "locations"
   end
 end
