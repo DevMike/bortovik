@@ -1,8 +1,6 @@
-class Region < ActiveRecord::Base
+class Region < Location
   belongs_to :country
   has_many :settlements
-  attr_accessible :name, :russian_name
 
-  validates :name, :presence => true
-  validates :russian_name, :presence => true
+  validates :country_id, :presence => true
 end
