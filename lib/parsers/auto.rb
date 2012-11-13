@@ -28,8 +28,8 @@ class AutoParser
     if nesting < LINKS_HOLDERS.length
       page.search(LINKS_HOLDERS[nesting]).each do |sublink|
         title = sublink.text
-        category[title] ||= {}
-        go_tree sublink['href'], category[title], nesting + 1
+        category[title] ||= {'children' => {}}
+        go_tree sublink['href'], category[title]['children'], nesting + 1
       end
     else
       parse_car page, category

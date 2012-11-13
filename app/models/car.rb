@@ -3,6 +3,10 @@ class Car < ActiveRecord::Base
 
   attr_accessible :name, :description
 
-  validates_presence_of :name
-  validates_uniqueness_of :name
+  validates :name, :presence => true, :uniqueness => true
+  validates :slug, :presence => true, :uniqueness => true
+
+  before_validation :set_slug, :if => ->{ slug.blank? }
+
+  def set_slug; self.slug = name end
 end

@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe Region do
   context 'attributes' do
     subject { FactoryGirl.create :region }
