@@ -4,6 +4,7 @@ gem "rails", "~> 3.2.8"
 gem "rake", "~> 0.9.3.beta.1"
 
 gem "pg", "~> 0.14.1"
+gem "mysql"
 
 # Authentication and authorization
 gem "devise", "~> 2.1.2"
@@ -110,7 +111,6 @@ group :development do
   gem "bullet"
   # Local mailer
   gem "mailcatcher", "~> 0.5.8"
-  gem "mysql"
   # for debugging
   gem 'pry'
 end
