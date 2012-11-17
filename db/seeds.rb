@@ -178,7 +178,7 @@ module Seeder
       end
 
       def create_app_settings!
-        AdminUser.create!({:email => 'zarechesnkiy.mihail@gmail.com', :password => '80rt0v0j', :password_confirmation => '80rt0v0j'}, :without_protection => true)
+        AdminUser.create!({:email => 'zarechenskiy.mihail@gmail.com', :password => '80rt0v0j', :password_confirmation => '80rt0v0j'}, :without_protection => true)
       end
     end
   end
