@@ -1,5 +1,5 @@
-require 'core_ext'
 require 'patches/simple_form/errors'
+require 'bortovik/validators'
 
 module Bortovik
   autoload :Strip, 'bortovik/strip'

@@ -8,5 +8,6 @@ describe Region do
     it { should have_many :settlements }
     it { should validate_presence_of :country_id }
     it_behaves_like "locations"
+    it_behaves_like "uniqueness regarding parent", :region, :country_id, [:name, :russian_name]
   end
 end

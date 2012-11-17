@@ -46,6 +46,10 @@ module Seeder
           end
           process_locations(location_hash[new_model], new_entity, depth + 1) if depth < LOCATION_MODELS.length - 1
         end
+      rescue Exception => error
+        Rails.logger.error %Q[Unable to create location: #{current_model},
+                              \nentity name: #{entity.name}, entity russian name: #{entity.russian_name},
+                              entity errors: #{entity.errors}, Error: #{error}]
       end
     end
   end
@@ -74,7 +78,7 @@ module Seeder
           if entity.nil?
             new_entity = CAR_MODELS[depth].create!(name: name, description: content['description'], slug: content['slug'])
           else
-            new_entity = entity.send(CAR_MODELS[depth]).create(name: name, description: content['description'], slug: content['slug'])
+            new_entity = entity.send(CAR_MODELS[depth]).create!(name: name, description: content['description'], slug: content['slug'])
           end
         end
         content = content['children'] unless depth < 0
@@ -174,7 +178,7 @@ module Seeder
       end
 
       def create_app_settings!
-        AdminUser.create!({:email => 'mihail.zarechenskiy@gmail.com', :password => '80rt0v0j', :password_confirmation => '80rt0v0j'}, :without_protection => true)
+        AdminUser.create!({:email => 'zarechesnkiy.mihail@gmail.com', :password => '80rt0v0j', :password_confirmation => '80rt0v0j'}, :without_protection => true)
       end
     end
   end

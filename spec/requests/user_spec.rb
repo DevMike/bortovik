@@ -74,9 +74,9 @@ describe "Registrations" do
       attributes.reject{|k,_| [:password, :password_confirmation, :confirmed_at, :preferred_currency].include?(k) }.each do |attr_name, value|
         user[attr_name].should == value
       end
-      user.country.should == settlement.region.country
-      user.region.should == settlement.region
-      user.settlement.should == settlement
+      user.country.id.should == settlement.region.country.id
+      user.region.id.should == settlement.region.id
+      user.settlement.id.should == settlement.id
     end
   end
 end
