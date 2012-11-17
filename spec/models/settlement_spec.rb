@@ -7,6 +7,6 @@ describe Settlement do
     it { should belong_to :region }
     it { should validate_presence_of :region_id }
     it_behaves_like "locations"
-    it_behaves_like "uniqueness regarding parent", :settlement, :region_id, [:name, :russian_name]
+    it_behaves_like "uniqueness regarding parent", :settlement, :region_id, [:name]
   end
 end

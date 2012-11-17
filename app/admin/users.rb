@@ -5,7 +5,7 @@ ActiveAdmin.register User do
   filter :name
   #filter :country, :as => :select, :collection => Country.order(:name).map(&:name)
   #filter :region, :as => :select, :collection => Region.order(:name).map(&:name)
-  filter :settlement, :as => :select, :collection => Settlement.order(:russian_name).map(&:russian_name)
+  filter :settlement, :as => :select, :collection => Settlement.order(:name).map(&:name)
 
   scope :all, :default => true
   scope :confirmed
@@ -24,7 +24,7 @@ ActiveAdmin.register User do
     column :name
     [:country, :region, :settlement].each do |location|
       column location do |user|
-        link_to user.send(location).russian_name, send("admin_#{location}_path", user.send(location))
+        link_to user.send(location).name, send("admin_#{location}_path", user.send(location))
       end
     end
     column :preferred_currency

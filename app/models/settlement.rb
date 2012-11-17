@@ -3,7 +3,7 @@ class Settlement < Location
   has_many :users
 
   validates :region_id, :presence => true
-  validates_with UniquenessRegardingParentValidator, parent_id_name: :region_id, validated: [:name, :russian_name]
+  validates_with UniquenessRegardingParentValidator, parent_id_name: :region_id, validated: [:name]
 
   delegate :country, :to => :region
 end

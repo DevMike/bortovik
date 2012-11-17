@@ -38,7 +38,7 @@ module Seeder
         current_model = LOCATION_MODELS[depth]
         new_model = LOCATION_MODELS[depth + 1]
         locations.each do |location_hash|
-          create_params = {name: location_hash[:name], russian_name: location_hash[:russian_name]}
+          create_params = {name: location_hash[:russian_name]}
           if entity.nil?
             new_entity = current_model.create!(create_params)
           else
@@ -48,7 +48,7 @@ module Seeder
         end
       rescue Exception => error
         Rails.logger.error %Q[Unable to create location: #{current_model},
-                              \nentity name: #{entity.name}, entity russian name: #{entity.russian_name},
+                              \nentity name: #{entity.name},
                               entity errors: #{entity.errors}, Error: #{error}]
       end
     end
