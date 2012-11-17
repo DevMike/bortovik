@@ -184,4 +184,6 @@ module Seeder
   end
 end
 
+ActiveRecord::Base.logger.level = Logger::Severity::UNKNOWN
 Seeder::Starter.seed
+
