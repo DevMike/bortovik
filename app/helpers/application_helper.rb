@@ -14,4 +14,13 @@ module ApplicationHelper
   def collection_for(scope)
     scope.sort_by(&:name).map{ |c| [c.name, c.id] }
   end
+
+  def smart_truncate(text, char_limit)
+    char_limit = char_limit - 3 # take into account dots
+    size = text.squish[0..char_limit].split.count - 1 #count spaces
+    text.split.reject do |token|
+      size += token.size
+      size > char_limit
+    end.join(" ").concat(text.size > char_limit ? "..." : "")
+  end
 end
