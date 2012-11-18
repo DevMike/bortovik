@@ -67,9 +67,7 @@ module Seeder
 
         cars_hash = add_descriptions_to_cars(cars_hash, descriptions_hash)
 
-        CarBrand.transaction do
-          create_cars(nil, nil, cars_hash)
-        end
+        create_cars(nil, nil, cars_hash)
       end
 
       private
