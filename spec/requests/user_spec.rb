@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe "Registrations" do
+  before{ FactoryGirl.create(:default_settlement) }
+
   context "agree checkbox behavior", :js => true do
     before(:each){ visit new_user_registration_path }
 
@@ -50,14 +52,14 @@ describe "Registrations" do
     it "should validate form" do
       visit new_user_registration_path
       submit_form
-      all('.error').count.should == 4
+      all('.error').count.should == 3
     end
 
     it "should save entered values", :js => true do
       settlement = FactoryGirl.create_list(:settlement, 3).last
       attributes = FactoryGirl.attributes_for(:user)
       inputs = { :text => [:name, :email, :password, :password_confirmation],
-                 :checkbox => %w(agree)}
+                 :checkbox => %w(user_agree)}
 
       visit new_user_registration_path
 
