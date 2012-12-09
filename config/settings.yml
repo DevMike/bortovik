@@ -5,7 +5,7 @@ system:
   default_timezone: Kyiv
 
 defaults:
-  settlement: Harkov
+  settlement: Харьков
 
 global:
   hosts:

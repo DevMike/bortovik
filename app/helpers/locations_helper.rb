@@ -1,10 +1,10 @@
 module LocationsHelper
   def selected_item(resource, association_name)
-    resource.send(association_name).id if resource.settlement
+    resource.send(association_name).id
   end
 
   def selected_collection(resource, association_name)
-    return [] if resource.settlement.blank?
+    return collection_for Country.all if association_name == :country
 
     case association_name
       when :region
