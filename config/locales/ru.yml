@@ -8,6 +8,8 @@ ru:
     save: Сохранить
     confirm: Вы уверены?
     back: Назад
+    greetings: "Здравствуйте, %{name}!"
+    from: "С уважением, администрация проекта Bortovik.net."
 
   email:
     contact_message: Контактное сообщение
@@ -41,6 +43,10 @@ ru:
     current_password_hint: введите текущий пароль для подтверждения изменений]
     remove: Удалить мой аккаунт
     register: Зарегистрироваться
+
+  contact_form:
+    name: Форма обратной связи
+    submit: Отправить
 
   sessions:
     sign_in: Войти
@@ -275,7 +281,7 @@ ru:
       settlement:
         name: Название
       user:
-        name: Имя
+        name: Ник
         email: Email
         password: Пароль
         password_confirmation: Подтверждение пароля
@@ -285,6 +291,11 @@ ru:
         agree: Согласен(на) с условиями
         country_id: Страна
         region_id: Регион
+      contact_form:
+        name: Имя
+        Email: Email
+        subject: Тема
+        description: Сообщение
 
     errors:
       models:

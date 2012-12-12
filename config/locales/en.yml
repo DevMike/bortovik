@@ -8,6 +8,8 @@ en:
     save: Save
     confirm: Are you sure?
     back: Back
+    greetings: "Hello, %{name}!"
+    from: "With the best regards, Bortovik.net team."
 
   email:
     contact_message: Contact message
@@ -41,6 +43,10 @@ en:
     current_password_hint: we need your current password to confirm your changes
     remove: Cancel my account
     register: Register
+
+  contact_form:
+    name: Contact form
+    submit: Submit
 
   sessions:
     sign_in: Sign in
@@ -285,6 +291,11 @@ en:
         agree: Agree with terms
         country_id: Country
         region_id: Region
+      contact_form:
+        name: Имя
+        Email: Email
+        subject: Тема
+        description: Сообщение
 
     errors:
       models:
