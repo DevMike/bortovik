@@ -252,6 +252,14 @@ en:
       carrierwave_processing_error: failed to be processed
       carrierwave_integrity_error: This was not an allowed file type (please choose a picture)
 
+  activemodel:
+    attributes:
+      contact_message:
+        name: Name
+        email: Email
+        description: Description
+        subject: Subject
+
   activerecord:
     attributes:
       car_brand:
@@ -269,11 +277,6 @@ en:
       car_modificaiton:
         name: Name
         description: Description
-      contact_message:
-        name: Name
-        email: Email
-        description: Description
-        subject: Subject
       country:
         name: Name
       region:
@@ -285,17 +288,13 @@ en:
         email: Email
         password: Password
         password_confirmation: Password confirmation
+        current_password: Current Password
         remember_me: Remember me
         settlement_id: City
         preferred_currency: Preferred currency
         agree: Agree with terms
         country_id: Country
         region_id: Region
-      contact_form:
-        name: Имя
-        Email: Email
-        subject: Тема
-        description: Сообщение
 
     errors:
       models:

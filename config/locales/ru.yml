@@ -40,7 +40,7 @@ ru:
 
   users:
     password_hint: не заполняйте это поле, если не хотите менять пароль
-    current_password_hint: введите текущий пароль для подтверждения изменений]
+    current_password_hint: введите текущий пароль для подтверждения изменений
     remove: Удалить мой аккаунт
     register: Зарегистрироваться
 
@@ -252,6 +252,14 @@ ru:
       carrierwave_processing_error: не могут быть обработаны
       carrierwave_integrity_error: Этот тип файлов не поддерживается (пожалуйста, выберите картинку)
 
+  activemodel:
+    attributes:
+      contact_message:
+        name: Имя
+        email: Email
+        description: Описание
+        subject: Тема
+
   activerecord:
     attributes:
       car_brand:
@@ -269,11 +277,6 @@ ru:
       car_modificaiton:
         name: Название
         description: Описание
-      contact_message:
-        name: Имя
-        email: Email
-        description: Описание
-        subject: Тема
       country:
         name: Название
       region:
@@ -285,17 +288,13 @@ ru:
         email: Email
         password: Пароль
         password_confirmation: Подтверждение пароля
+        current_password: Текущий пароль
         remember_me: Запомнить меня
         settlement_id: Город
         preferred_currency: Валюта просмотра
         agree: Согласен(на) с условиями
         country_id: Страна
         region_id: Регион
-      contact_form:
-        name: Имя
-        Email: Email
-        subject: Тема
-        description: Сообщение
 
     errors:
       models:
