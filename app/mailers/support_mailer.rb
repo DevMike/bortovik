@@ -7,6 +7,6 @@ class SupportMailer < ActionMailer::Base
     @message = message
 
     mail from: @message.email,
-         subject: 'Contact message'
+         subject: t('email.contact_message')
   end
 end

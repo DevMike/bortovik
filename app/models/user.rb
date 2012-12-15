@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
 
   delegate :region, :country, :to => :settlement
 
+  after_initialize :assign_default_locations, :unless => ->{ settlement }
+
   class << self
     def current_user
       Thread.current[:current_user]
@@ -32,5 +34,9 @@ class User < ActiveRecord::Base
     def current_user=(user)
       Thread.current[:current_user] = user
     end
+  end
+
+  def assign_default_locations
+    self.settlement = Settlement.find_by_name(Settings.defaults.settlement)
   end
 end
