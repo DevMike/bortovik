@@ -1,0 +1,346 @@
+ru:
+
+  global:
+    title: 'bortovik.net'
+    prefix: 'bortovik.net - '
+    postfix: ' - bortovik.net'
+    processing: Обработка ...
+    save: Сохранить
+    confirm: Вы уверены?
+    back: Назад
+    greetings: "Здравствуйте, %{name}!"
+    from: "С уважением, администрация проекта Bortovik.net."
+
+  email:
+    contact_message: Контактное сообщение
+    welcome: "Добро пожаловать, %{who}!"
+    hello: "Приветствуем, %{who}!"
+
+  page_title:
+    errors:
+      access_denied: Доступ закрыт
+      routing_error: Страница не найдена
+      internal_server_error: Внутренняя ошибка
+
+  char_counter:
+    char_text: 'осталось символов'
+    char_limit_exceeded_text: 'символов больше, чем'
+
+  locale:
+    ru: Русский
+
+  home:
+    contact_message:
+      greetings: "Спасибо!"
+    register: Зарегистрироваться
+    edit_registration: Редактировать профиль
+    login: Войти
+    logout: Выйти
+    contact_us: Связаться с нами
+
+  users:
+    password_hint: не заполняйте это поле, если не хотите менять пароль
+    current_password_hint: введите текущий пароль для подтверждения изменений
+    remove: Удалить мой аккаунт
+    register: Зарегистрироваться
+
+  contact_form:
+    name: Форма обратной связи
+    submit: Отправить
+
+  sessions:
+    sign_in: Войти
+    sign_up: Зарегистрироваться
+    forgot_password: Забыли пароль?
+    receive_confirmation: Не получили письмо на подтверждение аккаунта?
+
+  # https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/en-US.yml
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+    day_names:
+      - Воскресенье
+      - Понедельник
+      - Втроник
+      - Среда
+      - Четверг
+      - Пятница
+      - Суббота
+    abbr_day_names:
+      - Вс
+      - Пн
+      - Вт
+      - Ср
+      - Чт
+      - Пт
+      - Сб
+
+    month_names:
+      - ~
+      - Января
+      - Февраля
+      - Марта
+      - Апреля
+      - Мая
+      - Июня
+      - Июля
+      - Августа
+      - Сентября
+      - Октября
+      - Ноября
+      - Декабря
+    abbr_month_names:
+      - ~
+      - Янв
+      - Фев
+      - Мар
+      - Апр
+      - Май
+      - Июн
+      - Июл
+      - Авг
+      - Сен
+      - Окт
+      - Ноя
+      - Дек
+    order:
+      - :год
+      - :месяц
+      - :день
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+      date: "%d.%m.%Y"
+      time: "%H:%M"
+    am: "am"
+    pm: "pm"
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " and "
+      last_word_connector: ", and "
+
+    select:
+      prompt: "Сделайте выбор"
+
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+
+    currency:
+      format:
+        format: "%u%n"
+        unit: "$"
+        separator: "."
+        delimiter: ","
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+
+    percentage:
+      format:
+        delimiter: ""
+
+    precision:
+      format:
+        delimiter: ""
+
+    human:
+      format:
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one:   "Byte"
+            other: "Bytes"
+          kb: "Кб"
+          mb: "Мб"
+          gb: "Гб"
+          tb: "Тб"
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: Тысяча
+          million: Миллион
+          billion: Миллиард
+          trillion: Триллион
+          quadrillion: Квадриллион
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "меньше минуты"
+      less_than_x_seconds:
+        one:   "менее 1 секунды"
+        other: "менее %{count} секунд"
+      x_seconds:
+        one:   "1 секунда"
+        other: "%{count} секунд"
+      less_than_x_minutes:
+        one:   "менее минуты"
+        other: "менее %{count} минут"
+      x_minutes:
+        one:   "1 минута"
+        other: "%{count} минут"
+      about_x_hours:
+        one:   "около 1 часа"
+        other: "около %{count} часов"
+      x_days:
+        one:   "1 день"
+        other: "%{count} дней"
+      about_x_months:
+        one:   "около 1 месяца"
+        other: "около %{count} месяцев"
+      x_months:
+        one:   "1 месяц"
+        other: "%{count} месяцев"
+      about_x_years:
+        one:   "около 1 года"
+        other: "около %{count} лет"
+      over_x_years:
+        one:   "более 1 года"
+        other: "более %{count} лет"
+      almost_x_years:
+        one:   "почти 1 год"
+        other: "почти %{count} лет"
+    prompts:
+      year:   "Год"
+      month:  "Месяц"
+      day:    "День"
+      hour:   "Часов"
+      minute: "Минут"
+      second: "Секунд"
+
+  errors:
+    format: "%{attribute} %{message}"
+
+    messages: &errors_messages
+      inclusion: "имеет непредусмотренное значение"
+      exclusion: "имеет зарезервированное значение"
+      invalid: "имеет неверное значение"
+      confirmation: "не совпадает с подтверждением"
+      accepted: "нужно подтвердить"
+      empty: "не может быть пустым"
+      blank: "не может быть пустым"
+      too_long: "слишком большой длины (не может быть больше чем %{count} символовs)"
+      too_short: "недостаточной длины (не может быть меньше %{count} символов)"
+      wrong_length: "неверной длинны (должно быть %{count} символов)"
+      not_a_number: "не является числом"
+      not_an_integer: "не является целым числом"
+      greater_than: "может иметь значение большее %{count}"
+      greater_than_or_equal_to: "может иметь значение меньшее или равное %{count}"
+      equal_to: "может иметь лишь значение, равное %{count}"
+      less_than: "может иметь значение меньшее чем %{count}"
+      less_than_or_equal_to: "может иметь значение меньшее или равное %{count}"
+      odd: "может иметь лишь четное значение"
+      even: "может иметь лишь нечетное значение"
+      carrierwave_processing_error: не могут быть обработаны
+      carrierwave_integrity_error: Этот тип файлов не поддерживается (пожалуйста, выберите картинку)
+
+  activemodel:
+    attributes:
+      contact_message:
+        name: Имя
+        email: Email
+        description: Описание
+        subject: Тема
+
+  activerecord:
+    attributes:
+      car_brand:
+        name: Название
+        description: Описание
+      car_feature:
+        name: Характеристика
+      car_feature_car_modificaiton:
+        value: Значение
+      car_feature_category:
+        name: Тип характеристик
+      car_model:
+        name: Название
+        description: Описание
+      car_modificaiton:
+        name: Название
+        description: Описание
+      country:
+        name: Название
+      region:
+        name: Название
+      settlement:
+        name: Название
+      user:
+        name: Ник
+        email: Email
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        current_password: Текущий пароль
+        remember_me: Запомнить меня
+        settlement_id: Город
+        preferred_currency: Валюта просмотра
+        agree: Согласен(на) с условиями
+        country_id: Страна
+        region_id: Регион
+
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              not_found: "К сожалению, пользователи с таким адресом электронной почты не найдены."
+              was_deleted: "аккаунт был удален, пожалуйста, свяжитесь с администрацией, чтобы восстановить его"
+            representative:
+              should_be_company_approved: "should company approved"
+            confirmation_token:
+              invalid: "Либо ваш аккаунт уже был подтвержден или подтверждение является недействительным. Поробуйте повторно сделать подтверждение."
+        company:
+          attributes:
+            name:
+              taken: "Пользователь с таким именем уже существует. Пожалуйста выберите другое имя или <a href='http://www.geprueft.de/kontakt' target='_blank'>свяжитесь с техподдержкой</a> если у вас есть какие-либо вопросы"
+            logo:
+              wrong_size: "неверный размер (должно быть %{file_size})"
+              size_too_small: "слишком маленький (должно быть не менее %{file_size})"
+              size_too_big: "слишком большой (должно быть не более %{file_size})"
+        discount:
+          attributes:
+            base:
+              amount_required: Amount is required (either cents or percentages)
+              amount_one_format: Amount should be either in cents or percentages
+        review:
+          attributes:
+            applicable_ratings:
+              required: You should rate at least one criteria
+
+      template:
+        header:
+          one:    "1 error prohibited this %{model} from being saved"
+          other:  "%{count} errors prohibited this %{model} from being saved"
+        body: "There were problems with the following fields:"
+      en:
+
+      messages:
+        taken: "уже существует"
+        record_invalid: "Возникли ошибки: %{errors}"
+        company_already_exists: "Пользователь с именем %{company} уже зарегистрирован"
+        wrong_size: "неверный размер (должно быть %{file_size})"
+        size_too_small: "слишком маленький(должен быть не менее %{file_size})"
+        size_too_big: "слишком большой (должен быть не более %{file_size})"
+
+        <<: *errors_messages
+
+      full_messages:
+        format: "%{attribute} %{message}"
