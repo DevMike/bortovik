@@ -1,6 +1,6 @@
 - if user_signed_in?
   %li
-    = link_to(t('home.edit_registration'), edit_user_registration_path)
+    = link_to_profile(current_user)
 - else
   %li
     = link_to(t('home.register'), new_user_registration_path)

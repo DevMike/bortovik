@@ -1,0 +1,12 @@
+%h1= @user.full_name
+= image_tag @user.avatar.url(:medium)
+%dl
+  %dt= t 'users.icq'
+  %dd= @user.icq
+  %dt= t 'users.skype'
+  %dd= @user.skype
+  %dt= t 'users.phone'
+  %dd= @user.phone
+
+- if can? :edit, @user
+  = link_to(t('home.edit_registration'), edit_user_registration_path)

@@ -43,6 +43,9 @@ ru:
     current_password_hint: введите текущий пароль для подтверждения изменений
     remove: Удалить мой аккаунт
     register: Зарегистрироваться
+    icq: ICQ
+    skype: Skype
+    phone: Телефон
 
   contact_form:
     name: Форма обратной связи
