@@ -10,7 +10,7 @@ describe "Currency" do
       page.should_not have_css('a', :text => @selected_currency)
       page.should have_content(@selected_currency)
       unselected_currencies(@selected_currency).each do |currency|
-        page.should have_css('a', :href => root_path(:currency => currency))
+        find('a', :text => currency)[:href].should == root_path(:currency => currency)
       end
     end
   end

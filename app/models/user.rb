@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  include Enumerize
+  extend Enumerize
   CURRENCIES = %w(UAH RUB EUR USD)
   enumerize :preferred_currency, :in => CURRENCIES
 

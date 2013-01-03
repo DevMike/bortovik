@@ -36,8 +36,16 @@ RSpec::Matchers.define :be_visible_after_delay do
   end
 end
 
-def wait_for_ajax(timeout = 2) #timeout in seconds
-  page.wait_until(timeout) do
-    page.evaluate_script 'jQuery.active == 0'
+def wait_until
+  require "timeout"
+  Timeout.timeout(Capybara.default_wait_time) do
+    sleep(0.1) until value = yield
+    value
+  end
+end
+
+def wait_for_ajax
+  wait_until do
+    page.evaluate_script 'jQuery.isReady&&jQuery.active==0'
   end
 end
