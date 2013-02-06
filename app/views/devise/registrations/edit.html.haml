@@ -1,0 +1,13 @@
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f|
+  = f.error_notification
+  = f.input :name, :required => true, :autofocus => true
+  = f.input :email, :required => true
+  = f.input :password, :autocomplete => "off", :hint => t(:"users.password_hint"), :required => false
+  = f.input :password_confirmation, :required => false
+  = f.input :current_password, :hint => t(:"users.current_password_hint"), :required => true
+  .form-actions
+    = f.button :submit, t(:"global.save"), class: 'btn-primary'
+%p
+  = link_to t(:"users.remove"), registration_path(resource_name), :confirm => t(:"global.confirm"), :method => :delete
+  \.
+= link_to t(:"global.back"), :back

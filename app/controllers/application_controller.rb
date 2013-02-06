@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_currency
 
   protect_from_forgery
-  layout Proc.new { |controller| controller.request.xhr? ? false : 'application'}
+  layout Proc.new { |controller| controller.request.xhr? ? false : 'main'}
 
   protected
   def set_currency

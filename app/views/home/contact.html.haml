@@ -1,10 +1,9 @@
-%section.contact
-  = simple_form_for @contact_message, :url => contact_message_path do |f|
-    %h2= I18n.t(:"contact_form.name")
-    = f.input :name, :input_html => sender_input_attributes_for(:name, @contact_message)
-    = f.input :email, :input_html => sender_input_attributes_for(:email, @contact_message)
-    = f.input :subject
-    = f.input :description, :as => :text
-    = render 'shared/counter', :selector => '#contact_message_description'
-    = f.submit I18n.t(:"contact_form.submit")
-    .clear
+= simple_form_for @contact_message, url: contact_message_path, html: {class: 'form-horizontal'} do |f|
+  %h2= I18n.t(:"contact_form.name")
+  = f.input :name, :input_html => sender_input_attributes_for(:name, @contact_message)
+  = f.input :email, :input_html => sender_input_attributes_for(:email, @contact_message)
+  = f.input :subject
+  = f.input :description, :as => :text
+  = render 'shared/counter', :selector => '#contact_message_description'
+  .form-actions
+    = f.submit I18n.t(:"contact_form.submit"), class: 'btn btn-primary'
