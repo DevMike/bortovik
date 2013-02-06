@@ -18,6 +18,9 @@ gem "haml-rails", "~> 0.3.5"
 gem "therubyracer", "~> 0.11.0", :platform => :ruby
 gem "libv8", "~> 3.11.8.4", :platform => :ruby #therubyracer dependency, may be optional in future
 gem "coffee-script", "~> 2.2.0" # jquery is dependency
+#twitter bootstrap support
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 
 # Rake task schedule
 gem "whenever", "~> 0.8.1", :require => false
@@ -40,9 +43,6 @@ gem "bitmask_attributes"
 
 # imagemagick support
 gem "mini_magick", "~> 3.4"
-
-# pagination
-gem "kaminari", "~> 0.14.1"
 
 # admin backend
 gem "activeadmin", "~> 0.5.1"
