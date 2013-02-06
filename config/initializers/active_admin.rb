@@ -1,18 +1,3 @@
-# hacking in support for array-based scopes
-# see: https://github.com/gregbell/active_admin/issues/1158
-class Kaminari::PaginatableArray
-  def reorder(*args)
-    return self if args.blank? || args.all? {|a| a.blank?}
-    attr_name = args.first
-    return self unless self.all? {|x| x.respond_to?(attr_name.intern)}
-    self.sort_by {|x| x.send(attr_name.intern)}
-  end
-
-  def exists?
-    !!self
-  end
-end
-
 ActiveAdmin.setup do |config|
 
   config.default_per_page = 20
