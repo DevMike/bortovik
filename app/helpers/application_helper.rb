@@ -23,4 +23,8 @@ module ApplicationHelper
       size > char_limit
     end.join(" ").concat(text.size > char_limit ? "..." : "")
   end
+
+  def link_to_profile(user)
+    link_to(user.full_name, user_path(user))
+  end
 end
