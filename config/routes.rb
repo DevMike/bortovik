@@ -1,5 +1,4 @@
 Bortovik::Application.routes.draw do
-
   mount Ckeditor::Engine => '/ckeditor'
 
   ##
@@ -15,6 +14,7 @@ Bortovik::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users
+  resources :users, only: [:show]
 
   match 'locations/:country_id' => 'locations#get_collection', :as => :regions
   match 'locations/:country_id/:region_id' => 'locations#get_collection', :as => :settlements

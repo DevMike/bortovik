@@ -11,7 +11,10 @@ class User < ActiveRecord::Base
          :registerable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :settlement_id, :preferred_currency
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :settlement_id, :preferred_currency, :first_name, :middle_name, :last_name, :icq, :skype, :phone, :avatar
+
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
   attr_accessor :agree, :country_id, :region_id
 
   belongs_to :settlement
@@ -25,6 +28,10 @@ class User < ActiveRecord::Base
   delegate :region, :country, :to => :settlement
 
   after_initialize :assign_default_locations, :unless => ->{ settlement }
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 
   class << self
     def current_user

@@ -58,6 +58,9 @@ gem "money-rails", "~> 0.7.1"
 #markup editor
 gem "ckeditor", :git => "https://github.com/ginter/ckeditor.git"
 
+# attachments
+gem "paperclip"
+
 # Database-backed asynchronous priority queue system
 # @TODO: could be enabled later
 #gem "delayed_job", "~> 3.0.1"
