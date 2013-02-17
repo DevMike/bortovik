@@ -3,25 +3,14 @@ require 'spec_helper'
 describe "Registrations" do
   before{ FactoryGirl.create(:default_settlement) }
 
-  context "agree checkbox behavior", :js => true do
-    before(:each){ visit new_user_registration_path }
+  it "should validate", js: true do
+    visit new_user_registration_path
+    all('.error').count.should == 0
 
-    it "should show border around the checkbox and denied submit when unchecked" do
-      all('.failed').count.should == 0
+    submit_form
 
-      submit_form
-
-      all('.failed').count.should == 1
-      current_path.should eq(new_user_registration_path)
-    end
-
-    it "should allow submit when checked" do
-      check 'user_agree'
-      submit_form
-
-      all('.failed').count.should == 0
-      current_path.should_not eq(new_user_registration_path)
-    end
+    all('.error').count.should == 4
+    current_path.should eq(new_user_registration_path)
   end
 
   context "location dropowns reloading", :js => true do
@@ -52,7 +41,7 @@ describe "Registrations" do
     it "should validate form" do
       visit new_user_registration_path
       submit_form
-      all('.error').count.should == 3
+      all('.error').count.should == 5
     end
 
     it "should save entered values", :js => true do
@@ -70,10 +59,10 @@ describe "Registrations" do
       wait_for_ajax
       select settlement.name, :from => 'user_settlement_id'
       submit_form
-
+      sleep 5
       all('.error').count.should == 0
       user = User.last
-      attributes.reject{|k,_| [:password, :password_confirmation, :confirmed_at, :preferred_currency].include?(k) }.each do |attr_name, value|
+      attributes.reject{|k,_| [:password, :password_confirmation, :confirmed_at, :preferred_currency, :agree].include?(k) }.each do |attr_name, value|
         user[attr_name].should == value
       end
       user.country.id.should == settlement.region.country.id

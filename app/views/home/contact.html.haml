@@ -1,7 +1,7 @@
-= simple_form_for @contact_message, url: contact_message_path, html: {class: 'form-horizontal'} do |f|
+= simple_form_for @contact_message, url: contact_message_path, html: {class: 'form-horizontal'}, validate: true do |f|
   %h2= I18n.t(:"contact_form.name")
   = f.input :name, :input_html => sender_input_attributes_for(:name, @contact_message)
-  = f.input :email, :input_html => sender_input_attributes_for(:email, @contact_message)
+  = f.input :email, :input_html => sender_input_attributes_for(:email, @contact_message), validate: {format: false}
   = f.input :subject
   = f.input :description, :as => :text
   = render 'shared/counter', :selector => '#contact_message_description'
