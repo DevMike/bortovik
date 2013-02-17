@@ -18,3 +18,7 @@ form .failed{
 .hidden {
   display: none;
 }
+
+#main{
+  margin-top: 80px;
+}

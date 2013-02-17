@@ -24,7 +24,6 @@ Bortovik::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
-  config.serve_static_assets = false
 
   config.action_mailer.smtp_settings = {
     :address        => "localhost",
