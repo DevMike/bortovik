@@ -21,6 +21,10 @@ gem "coffee-script", "~> 2.2.0" # jquery is dependency
 #twitter bootstrap support
 gem "less-rails", "~> 2.2.6"
 gem "twitter-bootstrap-rails", "~> 2.2.3"
+# forms
+gem "simple_form", "~> 2.0.4"
+gem 'client_side_validations', "~> 3.2.1"
+gem 'client_side_validations-simple_form', "~> 2.0.1"
 
 # Rake task schedule
 gem "whenever", "~> 0.8.2", :require => false
@@ -30,16 +34,6 @@ gem "cancan", "~> 1.6.9"
 
 # config yaml file
 gem "rails_config", "~> 0.2.5d"
-
-# uploader
-# @TODO: need to be sure that this gem is the best to work with images
-gem 'carrierwave', "~> 0.8.0"
-gem 'rack-raw-upload'
-
-# form builder
-gem "simple_form", "~> 2.0.4"
-
-gem "bitmask_attributes"
 
 # imagemagick support
 gem "mini_magick", "~> 3.5.0"
