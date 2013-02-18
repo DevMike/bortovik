@@ -1,46 +1,23 @@
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'well form-horizontal'}) do |f|
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'well form-horizontal'}, validate: true) do |f|
   = f.error_notification
   .inputs
-    = f.input :name, :autofocus => true
-    = f.input :email, :required => true
-    = f.input :password, :required => true, :input_html => { :autocomplete => "off" }
-    = f.input :password_confirmation, :required => true, :input_html => { :autocomplete => "off" }
+    = f.input :name, validate: { presence: true, uniqueness: false }
+    = f.input :email
+    = f.input :password, input_html: { autocomplete: "off" }
+    = f.input :password_confirmation, input_html: { autocomplete: "off" }, validate: { presence: true }
     - [:country, :region, :settlement].each do |location|
-      = render :partial => 'locations/input', :locals => {:f => f, :resource => resource, :location => location}
-    = f.input :agree, :required => true, :input_html => {:type => 'checkbox'}
+      = render partial: 'locations/input', locals: {f: f, resource: resource, location: location}
+    = f.input :agree, input_html:  {type: 'checkbox'}, validate: { presence: true }
   .form-actions
     = f.button :submit, t(:"users.register"), class: 'btn'
-= render :partial => "devise/shared/links"
-
-
+= render partial: "devise/shared/links"
 
 
 - content_for :js do
   :javascript
     $(document).ready(function(){
-        validate_forms();
         restrict_location();
     });
-
-    function validate_forms(){
-        $('form').submit(function(){
-            var allow_submit = true,
-                form = $(this);
-            $('input[type=checkbox]', form).each(function(){
-                var el = $(this);
-                if (el.attr('name').match(/\[agree\]/)){
-                    if (el.attr('checked') == 'checked'){
-                        el.parent().removeClass('failed');
-                    }
-                    else{
-                        el.parent().addClass('failed');
-                        allow_submit = false;
-                    }
-                }
-            });
-            return allow_submit;
-        });
-    }
 
     function restrict_location(){
         $('#new_user select').on('change', function(){

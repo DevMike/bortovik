@@ -13,7 +13,7 @@
     };
 
     return this.each(function() {
-      $(this).live('keyup', function() {
+      $(this).on('keyup', function() {
         countChars(this);
       });
       countChars(this);

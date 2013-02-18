@@ -23,7 +23,7 @@ ru:
       internal_server_error: Внутренняя ошибка
 
   char_counter:
-    char_text: 'осталось символов'
+    char_text: 'символов осталось'
     char_limit_exceeded_text: 'символов больше, чем'
 
   locale:
