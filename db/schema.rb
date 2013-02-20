@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319204923) do
+ActiveRecord::Schema.define(:version => 20130402061636) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -157,6 +157,19 @@ ActiveRecord::Schema.define(:version => 20130319204923) do
 
   add_index "settlements", ["region_id"], :name => "index_settlements_on_region_id"
 
+  create_table "user_vehicles", :force => true do |t|
+    t.integer  "vehicle_id"
+    t.integer  "user_id"
+    t.date     "date_of_purchase"
+    t.date     "date_of_sale"
+    t.integer  "mileage_on_purchase"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "user_vehicles", ["user_id"], :name => "index_user_vehicles_on_user_id"
+  add_index "user_vehicles", ["vehicle_id"], :name => "index_user_vehicles_on_vehicle_id"
+
   create_table "users", :force => true do |t|
     t.string   "name",                                   :null => false
     t.string   "email",                  :default => ""
@@ -196,5 +209,23 @@ ActiveRecord::Schema.define(:version => 20130319204923) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["settlement_id"], :name => "index_users_on_settlement_id"
   add_index "users", ["url"], :name => "index_users_on_url"
+
+  create_table "vehicles", :force => true do |t|
+    t.integer  "car_modification_id"
+    t.float    "engine_volume"
+    t.string   "transmission"
+    t.string   "color"
+    t.integer  "mileage"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "vin"
+    t.integer  "release_year"
+  end
+
+  add_index "vehicles", ["car_modification_id"], :name => "index_vehicles_on_car_modification_id"
 
 end

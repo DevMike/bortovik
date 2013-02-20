@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
                   :icq, :skype, :phone, :avatar, :agree, :provider, :url
 
   belongs_to :settlement
+  has_many :vehicles, through: :user_vehicles
 
   scope :confirmed, where("#{table_name}.confirmation_token IS NOT NULL")
   scope :unconfirmed, where(:confirmation_token => nil)
