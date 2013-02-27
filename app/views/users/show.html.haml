@@ -10,3 +10,5 @@
 
 - if can? :edit, @user
   = link_to(t('home.edit_registration'), edit_user_registration_path)
+
+%p= link_to 'Garage', user_vehicles_path(@user)

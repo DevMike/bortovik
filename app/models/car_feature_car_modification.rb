@@ -6,5 +6,5 @@ class CarFeatureCarModification < ActiveRecord::Base
 
   validates_presence_of :car_feature, :car_modification, :value
 
-  #delegate :name, :car_feature
+  delegate :name, to: :car_feature
 end

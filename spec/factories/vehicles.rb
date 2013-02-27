@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :vehicle do
-    car_modification nil
-    engine_volume 1
-    transmission "MyString"
-    color "MyString"
-    mileage 1
+    association :car_modification, factory: :car_modification
+    engine_volume 2
+    transmission "custom"
+    color "yellow"
+    mileage 1000
   end
 end

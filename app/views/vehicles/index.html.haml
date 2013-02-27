@@ -1,0 +1,5 @@
+%ul
+  - @vehicles.each do |vehicle|
+    %li= vehicle.car_modification.name
+
+= link_to 'add one more', new_user_vehicle_path
