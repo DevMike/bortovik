@@ -1,0 +1,6 @@
+= simple_form_for([@user, @vehicle], html: {class: 'form-horizontal'}, remote: remote ||= false) do |f|
+  = f.input :color
+  = f.input :mileage
+  = f.association :car_modification
+  .form-actions
+    = f.submit

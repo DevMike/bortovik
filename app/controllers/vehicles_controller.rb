@@ -13,7 +13,7 @@ class VehiclesController < ApplicationController
     @vehicle = Vehicle.new(params[:vehicle])
     @vehicle.users << @user
     if @vehicle.save
-      redirect_to user_vehicles_path(@user), notice: 'vehicle added'
+      redirect_to user_vehicles_path(@user), notice: t('vehicle.added')
     else
       render :new
     end

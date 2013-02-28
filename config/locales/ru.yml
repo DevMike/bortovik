@@ -49,6 +49,12 @@ ru:
     icq: ICQ
     skype: Skype
     phone: Телефон
+    garage: Гараж
+
+  vehicle:
+    added: 'Автомобиль добавлен в гараж'
+    add: 'Добавить автомобиль'
+    new: 'Добавить автомобиль'
 
   contact_form:
     name: Форма обратной связи

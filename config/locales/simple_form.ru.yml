@@ -11,8 +11,12 @@ ru:
     error_notification:
       default_message: "Форма заполнена некорректно. Пожалуйста, исправьте ошибки ниже и отправьте ещё раз:"
     # Labels and hints examples
-    # labels:
-    #   password: 'Password'
+    labels:
+      password: 'Пароль'
+      vehicle:
+        color: 'Цвет'
+        mileage: 'Пробег'
+        car_modification: 'Модификация'
     #   user:
     #     new:
     #       email: 'E-mail para efetuar o sign in.'
