@@ -9,8 +9,6 @@ class Vehicle < ActiveRecord::Base
 
   validates_presence_of :color, :mileage, :car_modification
 
-  #accepts_nested_attributes :car_modification
-
   def owner
     mapper = user_vehicles.detect{ |uv| uv.date_of_sale.nil? }
     mapper.user if mapper.present?
