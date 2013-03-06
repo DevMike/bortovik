@@ -4,6 +4,7 @@ gem "rails", "~> 3.2.12"
 gem "rake", "~> 10.0.3"
 
 gem "pg", "~> 0.14.1"
+gem "mysql"
 
 # Authentication and authorization
 gem "devise", "~> 2.2.3"
@@ -55,8 +56,9 @@ gem "money-rails", "~> 0.7.1"
 gem "ckeditor", :git => "https://github.com/ginter/ckeditor.git"
 
 # attachments
-gem "paperclip"
-gem 'carrierwave'
+gem "paperclip", "= 3.0.4"
+gem "cocaine", "= 0.3.2"
+gem "carrierwave"
 
 # Database-backed asynchronous priority queue system
 # @TODO: could be enabled later

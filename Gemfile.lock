@@ -85,7 +85,7 @@ GEM
     client_side_validations-simple_form (2.0.1)
       client_side_validations (~> 3.2.0)
       simple_form (~> 2.0.3)
-    cocaine (0.4.2)
+    cocaine (0.3.2)
     coderay (1.0.8)
     coffee-script (2.2.0)
       coffee-script-source
@@ -143,7 +143,7 @@ GEM
     hashie (1.2.0)
     hike (1.2.1)
     httpauth (0.2.0)
-    i18n (0.6.1)
+    i18n (0.6.4)
     inherited_resources (1.3.1)
       has_scope (~> 0.5.0)
       responders (~> 0.6)
@@ -237,11 +237,11 @@ GEM
       omniauth (~> 1.1.0)
       omniauth-oauth2 (~> 1.0)
     orm_adapter (0.4.0)
-    paperclip (3.4.0)
+    paperclip (3.0.4)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-      cocaine (~> 0.4.0)
+      cocaine (>= 0.0.2)
       mime-types
     parallel (0.6.2)
     parallel_tests (0.9.3)
@@ -351,7 +351,7 @@ GEM
       actionpack (>= 3.1)
       execjs
       railties (>= 3.1)
-    tzinfo (0.3.35)
+    tzinfo (0.3.36)
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
@@ -382,6 +382,7 @@ DEPENDENCIES
   ckeditor!
   client_side_validations (~> 3.2.1)
   client_side_validations-simple_form (~> 2.0.1)
+  cocaine (= 0.3.2)
   coffee-script (~> 2.2.0)
   compass-rails (~> 1.0.3)
   database_cleaner (~> 0.9.1)
@@ -403,7 +404,7 @@ DEPENDENCIES
   omniauth (~> 1.1.3)
   omniauth-facebook (~> 1.4.1)
   omniauth-vkontakte (~> 1.2.0)
-  paperclip
+  paperclip (= 3.0.4)
   parallel_tests (~> 0.9.3)
   pg (~> 0.14.1)
   pry (~> 0.9.10)

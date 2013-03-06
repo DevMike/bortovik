@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   scope :confirmed, where("#{table_name}.confirmation_token IS NOT NULL")
   scope :unconfirmed, where(:confirmation_token => nil)
 
-  validates_presence_of :settlement_id, :name
+  validates_presence_of :settlement_id, :name, :email
   validates_presence_of :password, :agree, :on => :create, :unless => :create_via_oauth?
   validates_presence_of :password, :on => :update, :unless => :profile_filled?
   validates_confirmation_of :password
@@ -39,8 +39,9 @@ class User < ActiveRecord::Base
   delegate :region, :country, :to => :settlement
 
   after_initialize :assign_default_locations, :unless => :settlement
-  
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" },
+    url: '/uploads/:class/:id/:style_:filename'
 
   def full_name
     "#{first_name} #{last_name}"
