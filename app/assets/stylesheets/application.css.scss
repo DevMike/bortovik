@@ -22,3 +22,20 @@ form .failed{
 #main{
   margin-top: 80px;
 }
+
+.reg {
+  margin: 3% 0 0 30% !important;
+  position: absolute;
+  top: 0;
+
+  ul {
+    margin-bottom: 0;
+
+    li{ line-height: 30px!important; }
+    img {
+      height: 25px;
+      margin-left: 5px;
+    }
+  }
+}
+

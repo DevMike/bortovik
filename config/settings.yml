@@ -15,3 +15,11 @@ global:
 
 mail:
   contact_mail: zarechenskiy.mihail@gmail.com #will be overwritten later
+
+auth:
+  facebook:
+    id: 118687028317192
+    secret: 814e59c1f27996c485c228bf10cb9650
+  vkontakte:
+    id: 3480385
+    secret: ZqnXnrSmwhlYNtcN3pkj

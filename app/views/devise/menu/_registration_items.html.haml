@@ -1,6 +1,7 @@
-- if user_signed_in?
-  %li
-    = link_to_profile(current_user)
-- else
-  %li
-    = link_to(t('home.register'), new_user_registration_path)
+- unless user_signed_in?
+  .well.sidebar-nav.reg
+    %ul.nav.nav-list
+      %ul.nav
+        %li= link_to(t('home.register'), new_user_registration_path)
+        - User::OUTSIDE_AUTH_SERVICES.each do |service|
+          %li= link_to_service service

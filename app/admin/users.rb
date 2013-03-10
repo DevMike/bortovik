@@ -28,13 +28,17 @@ ActiveAdmin.register User do
       end
     end
     column :preferred_currency
+    column :provider
 
     default_actions
   end
 
   show do
     attributes_table_for user do
-      rows :id, :name, :email, :country, :region, :settlement
+      rows :id, :name, :email, :country, :region, :settlement, :gender, :provider
+      row :url do |u|
+        link_to u.url, u.url
+      end
     end
   end
 

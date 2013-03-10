@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     if !resource_or_scope.is_a?(AdminUser) && current_user.preferred_currency
       MoneyRails.default_currency = current_user.preferred_currency
     end
-    super
+    resource_or_scope.profile_filled? ? super : edit_user_registration_path
   end
 
   def stored_location_for(resource_or_scope)
