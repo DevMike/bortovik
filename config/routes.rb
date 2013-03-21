@@ -17,9 +17,12 @@ Bortovik::Application.routes.draw do
   resources :users, only: [:show] do
     resources :vehicles, only: [:index, :new, :create]
   end
+  resources :vehicles, only: [:show]
 
   match 'locations/:country_id' => 'locations#get_collection', :as => :regions
   match 'locations/:country_id/:region_id' => 'locations#get_collection', :as => :settlements
+
+  match 'cars/:resource/:id' => 'cars#get_collection', :as => :cars
 
   scope :controller => :home do
     get 'contact' => :contact, :as => :contact

@@ -1,5 +1,5 @@
 %ul
   - @vehicles.each do |vehicle|
-    %li= vehicle.car_modification.name
+    %li= link_to vehicle.car_modification.name, vehicle
 
 = link_to t('vehicle.add'), new_user_vehicle_path, remote: true

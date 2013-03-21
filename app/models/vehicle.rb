@@ -9,8 +9,18 @@ class Vehicle < ActiveRecord::Base
 
   validates_presence_of :color, :mileage, :car_modification
 
+  delegate :car_model, to: :car_modification
+  delegate :car_brand, to: :car_model
+
+  after_initialize :set_defaults
+
   def owner
     mapper = user_vehicles.detect{ |uv| uv.date_of_sale.nil? }
     mapper.user if mapper.present?
+  end
+
+  private
+  def set_defaults
+    self.car_modification ||= CarModification.first
   end
 end

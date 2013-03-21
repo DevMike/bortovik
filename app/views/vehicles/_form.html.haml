@@ -1,6 +1,9 @@
 = simple_form_for([@user, @vehicle], html: {class: 'form-horizontal'}, remote: remote ||= false) do |f|
   = f.input :color
   = f.input :mileage
-  = f.association :car_modification
+  = f.input :engine_volume
+  = f.input :transmission
+  - [:car_brand, :car_model, :car_modification].each do |car|
+    = render partial: 'cars/input', locals: {f: f, car: car, collection: car.to_s.camelize.constantize.all}
   .form-actions
     = f.submit
