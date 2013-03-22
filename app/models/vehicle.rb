@@ -1,4 +1,11 @@
+# encoding: utf-8
+
 class Vehicle < ActiveRecord::Base
+  extend Enumerize
+
+  COLORS = %w(чёрный белый жёлтый красный зелёный синий)
+  enumerize :color, in: COLORS
+
   belongs_to :car_modification
   has_many :user_vehicles
   has_many :users, through: :user_vehicles

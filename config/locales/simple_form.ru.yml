@@ -14,9 +14,6 @@ ru:
     labels:
       password: 'Пароль'
       vehicle:
-        color: 'Цвет'
-        mileage: 'Пробег'
-        car_modification: 'Модификация'
     #   user:
     #     new:
     #       email: 'E-mail para efetuar o sign in.'
