@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :set_currency
+  before_filter :check_is_profile_filled
 
   protect_from_forgery
   layout Proc.new { |controller| controller.request.xhr? ? false : 'main'}
@@ -17,10 +18,22 @@ class ApplicationController < ActionController::Base
     if !resource_or_scope.is_a?(AdminUser) && current_user.preferred_currency
       MoneyRails.default_currency = current_user.preferred_currency
     end
-    resource_or_scope.profile_filled? ? super : edit_user_registration_path
+    super
   end
 
   def stored_location_for(resource_or_scope)
     resource_or_scope.is_a?(AdminUser) ? super : nil
+  end
+
+  def check_is_profile_filled
+    if current_user && !current_user.profile_filled?
+      unless flash[:notice].to_s.match(/#{t(:"notice.fill_profile")}/)
+        flash[:notice] = (flash[:notice] ? "#{flash[:notice]}<br/>" : '') + t(:"notice.fill_profile")
+      end
+
+      if !self.is_a?(RegistrationsController) && !request.fullpath.match(/sign_out/)
+        redirect_to(edit_user_registration_path)
+      end
+    end
   end
 end

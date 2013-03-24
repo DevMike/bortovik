@@ -3,7 +3,7 @@
   .inputs
     = f.input :name, validate: { presence: true, uniqueness: false }
     = f.input :email
-    = f.input :password, input_html: { autocomplete: "off" }
+    = f.input :password, input_html: { autocomplete: "off" }, validate: { presence: true }
     = f.input :password_confirmation, input_html: { autocomplete: "off" }, validate: { presence: true }
     - [:country, :region, :settlement].each do |location|
       = render partial: 'locations/input', locals: {f: f, resource: resource, location: location}

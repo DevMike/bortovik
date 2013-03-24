@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of :settlement_id, :name
   validates_presence_of :password, :agree, :on => :create, :unless => :create_via_oauth?
-  validates_presence_of :password, :on => :update
+  validates_presence_of :password, :on => :update, :unless => :profile_filled?
   validates_confirmation_of :password
   validates_uniqueness_of :name
 
@@ -81,7 +81,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  def profile_filled?; valid? end
+  #check is a user registered via oauth updated his profile or not
+  def profile_filled?
+    !((created_at.to_s == updated_at.to_s) && provider)
+  end
 
   def create_via_oauth?; provider end
 

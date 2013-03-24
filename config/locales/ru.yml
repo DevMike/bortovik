@@ -60,6 +60,9 @@ ru:
     forgot_password: Забыли пароль?
     receive_confirmation: Не получили письмо на подтверждение аккаунта?
 
+  notice:
+    fill_profile: "Для доступа ко всем возможностям сайта необходимо заполнить профиль:"
+
   # https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/en-US.yml
   date:
     formats:

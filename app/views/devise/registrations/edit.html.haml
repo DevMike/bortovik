@@ -2,7 +2,8 @@
   = f.error_notification
   = f.input :name, :required => true, :autofocus => true
   = f.input :email, :required => true
-  = f.input :password, :hint => t(:"users.password_hint"), :required => false, :input_html => { :autocomplete => "off" }
+  = f.input :password, :required => false, :input_html => { :autocomplete => "off" },
+                       :hint => resource.profile_filled? ? t(:"users.password_hint") : ""
   = f.input :password_confirmation, :required => false
   = f.input :first_name
   = f.input :last_name
