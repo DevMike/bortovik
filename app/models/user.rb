@@ -69,10 +69,11 @@ class User < ActiveRecord::Base
     end
 
     def get_username(data, first_name, last_name)
-      name = [data.info.nickname, data.info.name, data.extra.raw_info.name, [first_name, last_name].compact.join(' ')].select(&:present?)[0]
-      if exists?(name: name)
+      name = [data.info.nickname, data.info.name, data.extra.raw_info.name, [first_name, last_name].compact.join(' ')].detect(&:present?)
+      names = pluck(:name)
+      if names.include?(name)
         i = 0
-        while exists?(name: name) do
+        while names.include?(name) do
           i += 1; name = "#{name}-#{i}"
         end
       end
