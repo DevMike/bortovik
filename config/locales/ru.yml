@@ -11,6 +11,12 @@ ru:
     greetings: "Здравствуйте, %{name}!"
     from: "С уважением, администрация проекта Bortovik.net."
 
+  auth:
+    register: Зарегистрироваться
+    register_via: Зарегистрироваться через
+    login: Войти
+    logout: Выйти
+
   email:
     contact_message: Контактное сообщение
     welcome: "Добро пожаловать, %{who}!"
@@ -32,10 +38,7 @@ ru:
   home:
     contact_message:
       greetings: "Спасибо!"
-    register: Зарегистрироваться
     edit_registration: Редактировать профиль
-    login: Войти
-    logout: Выйти
     contact_us: Связаться с нами
 
   users:
@@ -56,6 +59,9 @@ ru:
     sign_up: Зарегистрироваться
     forgot_password: Забыли пароль?
     receive_confirmation: Не получили письмо на подтверждение аккаунта?
+
+  notice:
+    fill_profile: "Для доступа ко всем возможностям сайта необходимо заполнить профиль:"
 
   # https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/en-US.yml
   date:
