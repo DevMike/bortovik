@@ -11,6 +11,7 @@ class VehiclesController < ApplicationController
 
   def new
     @vehicle = Vehicle.new
+    @vehicle.car_modification = CarModification.first
   end
 
   def create

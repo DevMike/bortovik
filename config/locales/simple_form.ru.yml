@@ -13,7 +13,6 @@ ru:
     # Labels and hints examples
     labels:
       password: 'Пароль'
-      vehicle:
     #   user:
     #     new:
     #       email: 'E-mail para efetuar o sign in.'
