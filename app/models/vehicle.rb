@@ -18,6 +18,7 @@ class Vehicle < ActiveRecord::Base
   attr_accessor :car_brand_id, :car_model_id
 
   validates_presence_of :color, :mileage, :car_modification
+  validates_numericality_of :mileage, :engine_volume
 
   delegate :car_model, to: :car_modification
   delegate :car_brand, to: :car_model

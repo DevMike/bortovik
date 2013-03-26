@@ -300,9 +300,9 @@ ru:
       vehicle:
         color: Цвет
         mileage: Пробег
-        car_modification: Модификация
-        car_brand: Марка
-        car_model: Модель
+        car_modification_id: Модификация
+        car_brand_id: Марка
+        car_model_id: Модель
         engine_volume: Объём двигателя
         transmission: Трансмиссия
       country:

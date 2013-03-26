@@ -15,7 +15,8 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    if @user.vehicles.create(params[:vehicle])
+    @vehicle = @user.vehicles.build(params[:vehicle])
+    if @vehicle.save
       redirect_to user_vehicles_path(@user), notice: t('vehicle.added')
     else
       render :new
