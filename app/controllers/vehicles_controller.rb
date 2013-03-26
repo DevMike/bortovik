@@ -1,4 +1,5 @@
 class VehiclesController < ApplicationController
+  load_and_authorize_resource
   before_filter :get_owner, only: [:index, :new, :create]
 
   def index
@@ -15,8 +16,8 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    @vehicle = @user.vehicles.build(params[:vehicle])
-    if @vehicle.save
+    if @vehicle = Vehicle.create(params[:vehicle])
+      @user.vehicles << @vehicle
       redirect_to user_vehicles_path(@user), notice: t('vehicle.added')
     else
       render :new
