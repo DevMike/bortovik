@@ -8,7 +8,9 @@ gem "pg", "~> 0.14.1"
 # Authentication and authorization
 gem "devise", "~> 2.2.3"
 gem "devise-encryptable", "~> 0.1.1"
-gem "devise_invitable", "~> 1.1.5"
+gem "omniauth", "~> 1.1.3"
+gem "omniauth-facebook", "~> 1.4.1"
+gem "omniauth-vkontakte", "~> 1.2.0"
 
 # View related gems
 gem "compass-rails", "~> 1.0.3"
@@ -33,7 +35,7 @@ gem "whenever", "~> 0.8.2", :require => false
 gem "cancan", "~> 1.6.9"
 
 # config yaml file
-gem "rails_config", "~> 0.2.5d"
+gem "rails_config", ">= 0.2.5d"
 
 # imagemagick support
 gem "mini_magick", "~> 3.5.0"
@@ -54,6 +56,7 @@ gem "ckeditor", :git => "https://github.com/ginter/ckeditor.git"
 
 # attachments
 gem "paperclip"
+gem 'carrierwave'
 
 # Database-backed asynchronous priority queue system
 # @TODO: could be enabled later
@@ -97,6 +100,8 @@ gem 'mechanize', "~> 2.5.1"
 #unicode support
 gem 'unicode'
 
+gem "mysql", :require => false
+
 group :test, :development do
   gem "rspec-rails", "~> 2.12.0"
   gem "shoulda-matchers", "~> 1.4.2"
@@ -113,6 +118,8 @@ group :development do
   gem "mailcatcher", "~> 0.5.10"
   # for debugging
   gem "pry", "~> 0.9.10"
+  #vkontakte test
+  gem "localtunnel"
 end
 
 group :test do
@@ -122,5 +129,4 @@ group :test do
   gem "spork", "~> 1.0.0r3"
   gem "email_spec", "~> 1.4.0"
   gem "timecop", "~> 0.5.9.2"
-  gem "mysql", :require => false
 end

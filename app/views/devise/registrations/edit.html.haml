@@ -2,7 +2,8 @@
   = f.error_notification
   = f.input :name, :required => true, :autofocus => true
   = f.input :email, :required => true
-  = f.input :password, :autocomplete => "off", :hint => t(:"users.password_hint"), :required => false
+  = f.input :password, :required => false, :input_html => { :autocomplete => "off" },
+                       :hint => resource.profile_filled? ? t(:"users.password_hint") : ""
   = f.input :password_confirmation, :required => false
   = f.input :first_name
   = f.input :last_name
@@ -11,7 +12,6 @@
   = f.input :icq
   = f.input :skype
   = f.input :phone
-  = f.input :current_password, :hint => t(:"users.current_password_hint"), :required => true
   .form-actions
     = f.button :submit, t(:"global.save"), class: 'btn-primary'
 %p

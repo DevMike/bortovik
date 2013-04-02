@@ -53,9 +53,10 @@ Bortovik::Application.configure do
   config.active_support.deprecation = :notify
 
   #heroku basic authentication
-  config.middleware.insert_after(::Rack::Lock, "::Rack::Auth::Basic", "Production") do |u, p|
-    [u, p] == [ENV['BA_USERNAME'], ENV['BA_PASSWORD']]
-  end
+  # temporary
+  #config.middleware.insert_after(::Rack::Lock, "::Rack::Auth::Basic", "Production") do |u, p|
+  #  [u, p] == [ENV['BA_USERNAME'], ENV['BA_PASSWORD']]
+  #end
 
   config.action_mailer.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
