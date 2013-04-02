@@ -1,5 +1,5 @@
 %h1= @vehicle.name
 %dl
-  - [:color, :engine_volume, :mileage, :transmission].each do |attr|
+  - [:color, :engine_volume, :mileage, :transmission, :release_year, :vin].each do |attr|
     %dt= t("activerecord.attributes.vehicle.#{attr}")
     %dd= @vehicle.send(attr)

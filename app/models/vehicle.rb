@@ -14,7 +14,7 @@ class Vehicle < ActiveRecord::Base
   has_many :car_feature_car_modifications, through: :car_modification
   alias_method :features, :car_feature_car_modifications
 
-  attr_accessible :color, :engine_volume, :mileage, :transmission, :car_modification_id
+  attr_accessible :color, :engine_volume, :mileage, :transmission, :car_modification_id, :vin, :release_year
   attr_accessor :car_brand_id, :car_model_id
 
   validates_presence_of :color, :mileage, :car_modification

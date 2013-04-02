@@ -305,6 +305,8 @@ ru:
         car_model_id: Модель
         engine_volume: Объём двигателя
         transmission: Трансмиссия
+        vin: Номер кузова
+        release_year: Год выпуска
       country:
         name: Название
       region:
