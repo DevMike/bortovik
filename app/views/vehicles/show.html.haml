@@ -3,3 +3,5 @@
   - [:color, :engine_volume, :mileage, :transmission, :release_year, :vin].each do |attr|
     %dt= t("activerecord.attributes.vehicle.#{attr}")
     %dd= @vehicle.send(attr)
+  %dt= t("activerecord.attributes.user_vehicle.mileage_on_purchase")
+  %dd= @vehicle.user_vehicles.detect{|uv| uv.user == @vehicle.owner}.mileage_on_purchase

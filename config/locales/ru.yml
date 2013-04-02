@@ -297,6 +297,9 @@ ru:
       car_modificaiton:
         name: Название
         description: Описание
+      user_vehicle:
+        date_of_purchase: Дата покупки
+        mileage_on_purchase: Пробег на момент покупки
       vehicle:
         color: Цвет
         mileage: Пробег

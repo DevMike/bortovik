@@ -1,4 +1,5 @@
 class CarModel < Car
+  default_scope order(:name)
   belongs_to :car_brand
   has_many :car_modifications, dependent: :destroy
 

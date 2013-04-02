@@ -16,6 +16,7 @@ class Vehicle < ActiveRecord::Base
 
   attr_accessible :color, :engine_volume, :mileage, :transmission, :car_modification_id, :vin, :release_year
   attr_accessor :car_brand_id, :car_model_id
+  accepts_nested_attributes_for :user_vehicles
 
   validates_presence_of :color, :mileage, :car_modification
   validates_numericality_of :mileage, :engine_volume

@@ -17,7 +17,8 @@ class VehiclesController < ApplicationController
 
   def create
     if @vehicle = Vehicle.create(params[:vehicle])
-      @user.vehicles << @vehicle
+      uv = @user.user_vehicles.create(params[:vehicle][:user_vehicle])
+      uv.update_attribute(:vehicle, @vehicle)
       redirect_to user_vehicles_path(@user), notice: t('vehicle.added')
     else
       render :new

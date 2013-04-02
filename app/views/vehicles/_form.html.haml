@@ -2,10 +2,14 @@
   - [:car_brand, :car_model, :car_modification].each do |car|
     = render partial: 'cars/input', locals: {f: f, car: car, collection: car.to_s.camelize.constantize.all}
   = f.input :release_year
+  = f.simple_fields_for :user_vehicle do |uv|
+    = uv.input :date_of_purchase
   = f.input :engine_volume
   = f.input :transmission
   = f.input :vin
   = f.input :color
   = f.input :mileage
+  = f.simple_fields_for :user_vehicle do |uv|
+    = uv.input :mileage_on_purchase
   .form-actions
     = f.submit
