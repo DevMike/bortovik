@@ -21,6 +21,7 @@ gem "haml-rails", "~> 0.4"
 gem "therubyracer", "~> 0.11.3", :platform => :ruby
 gem "libv8", "~> 3.11.8.13", :platform => :ruby #therubyracer dependency, may be optional in future
 gem "coffee-script", "~> 2.2.0" # jquery is dependency
+gem 'bootstrap-datepicker-rails'
 #twitter bootstrap support
 gem "less-rails", "~> 2.2.6"
 gem "twitter-bootstrap-rails", "~> 2.2.3"

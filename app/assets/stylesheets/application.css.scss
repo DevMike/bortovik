@@ -10,7 +10,9 @@
  *
  *= require_self
  *= require_tree .
+ *= require bootstrap-datepicker
 */
+
 form .failed{
   border: 1px solid #f00;
 }

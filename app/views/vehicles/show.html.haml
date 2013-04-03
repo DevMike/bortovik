@@ -4,4 +4,6 @@
     %dt= t("activerecord.attributes.vehicle.#{attr}")
     %dd= @vehicle.send(attr)
   %dt= t("activerecord.attributes.user_vehicle.mileage_on_purchase")
-  %dd= @vehicle.user_vehicles.detect{|uv| uv.user == @vehicle.owner}.mileage_on_purchase
+  %dd= @vehicle.mileage_on_purchase
+  %dt= t("activerecord.attributes.user_vehicle.date_of_purchase")
+  %dd= @vehicle.date_of_purchase

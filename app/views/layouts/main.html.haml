@@ -51,9 +51,10 @@
             %h3 Sidebar
             %ul.nav.nav-list
               %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              - if current_user
+                %li= link_to(t('home.edit_registration'), edit_user_registration_path)
+                %li= link_to t('users.garage'), user_vehicles_path(current_user)
+                %li= link_to(t('home.logout'), destroy_user_session_path, :method => :delete)
     
       %footer
         %p &copy; Company 2012

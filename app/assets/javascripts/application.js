@@ -16,6 +16,8 @@
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require_tree ./lib
+//= require bootstrap-datepicker
+//= require dates
 
 window.ClientSideValidations.validators.local.presence = function(element, options) {
    switch (element.attr('type')) {

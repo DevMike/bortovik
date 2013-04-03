@@ -24,12 +24,18 @@ class Vehicle < ActiveRecord::Base
   delegate :car_model, to: :car_modification
   delegate :car_brand, to: :car_model
 
+  delegate :mileage_on_purchase, :date_of_purchase, to: :owner_mapper
+
   def owner
-    mapper = user_vehicles.detect{ |uv| uv.date_of_sale.nil? }
-    mapper.user if mapper.present?
+    owner_mapper.user if owner_mapper.present?
   end
 
   def name
     "#{car_brand.name} #{car_model.name}"
+  end
+
+  private
+  def owner_mapper
+    user_vehicles.detect{ |uv| uv.date_of_sale.nil? }
   end
 end
