@@ -14,11 +14,11 @@ class Vehicle < ActiveRecord::Base
   has_many :car_feature_car_modifications, through: :car_modification
   alias_method :features, :car_feature_car_modifications
 
-  attr_accessible :color, :engine_volume, :mileage, :transmission, :car_modification_id, :vin, :release_year
+  attr_accessible :color, :engine_volume, :mileage, :transmission, :car_modification_id, :vin, :release_year, :user_vehicles
   attr_accessor :car_brand_id, :car_model_id
   accepts_nested_attributes_for :user_vehicles
 
-  validates_presence_of :color, :mileage, :car_modification
+  validates_presence_of :color, :transmission, :car_modification, :release_year
   validates_numericality_of :mileage, :engine_volume
 
   delegate :car_model, to: :car_modification

@@ -287,19 +287,16 @@ ru:
         description: Описание
       car_feature:
         name: Характеристика
-      car_feature_car_modificaiton:
+      car_feature_car_modification:
         value: Значение
       car_feature_category:
         name: Тип характеристик
       car_model:
         name: Название
         description: Описание
-      car_modificaiton:
+      car_modification:
         name: Название
         description: Описание
-      user_vehicle:
-        date_of_purchase: Дата покупки
-        mileage_on_purchase: Пробег на момент покупки
       vehicle:
         color: Цвет
         mileage: Пробег
@@ -310,6 +307,9 @@ ru:
         transmission: Трансмиссия
         vin: Номер кузова
         release_year: Год выпуска
+      user_vehicle:
+        date_of_purchase: Дата покупки
+        mileage_on_purchase: Пробег на момент покупки
       country:
         name: Название
       region:

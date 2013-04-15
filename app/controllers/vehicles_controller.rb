@@ -13,6 +13,7 @@ class VehiclesController < ApplicationController
   def new
     @vehicle = Vehicle.new
     @vehicle.car_modification = CarModification.first
+    @user_vehicle = UserVehicle.new(user: @user, vehicle: @vehicle)
   end
 
   def create

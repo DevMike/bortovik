@@ -5,7 +5,8 @@ class UserVehicle < ActiveRecord::Base
 
   before_save :check_vehicle_owner
 
-  #validates_presence_of :vehicle, :user
+  validates_presence_of :vehicle, :user, :date_of_purchase
+  validates_numericality_of :mileage_on_purchase
 
   private
 
