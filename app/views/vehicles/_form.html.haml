@@ -1,6 +1,5 @@
 = simple_form_for([@user, @vehicle], html: {class: 'form-horizontal'}, remote: remote ||= false, validate: true) do |f|
-  - [:car_brand, :car_model, :car_modification].each do |car|
-    = render partial: 'cars/input', locals: {f: f, car: car, collection: car.to_s.camelize.constantize.all}
+  = render_car_brand
   = f.input :release_year
   = f.simple_fields_for @user_vehicle do |uv|
     = uv.input :date_of_purchase, as: :string, input_html: {class: 'datepicker'}

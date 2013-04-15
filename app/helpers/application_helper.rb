@@ -27,4 +27,17 @@ module ApplicationHelper
   def link_to_profile(user)
     link_to(user.full_name, user_path(user))
   end
+
+  def cars_list_select(list, resource)
+    form = nil
+    simple_form_for(:vehicle){|f| form = f}
+    render partial: 'cars/input', locals: {f: form, car: resource, collection: list}
+  end
+
+  def render_car_brand
+    brands = CarBrand.all
+    models = brands.first.car_models
+    modifications = models.first.car_modifications
+    [[:car_brand, brands], [:car_model, models], [:car_modification, modifications]].map { |car| cars_list_select(car.last, car.first)}.join('').html_safe
+  end
 end
