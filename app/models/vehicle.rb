@@ -18,8 +18,8 @@ class Vehicle < ActiveRecord::Base
   attr_accessor :car_brand_id, :car_model_id
   accepts_nested_attributes_for :user_vehicles
 
-  validates_presence_of :color, :transmission, :car_modification, :release_year
-  validates_numericality_of :mileage, :engine_volume
+  validates_presence_of :color, :transmission, :car_modification
+  validates_numericality_of :mileage, :engine_volume, :release_year
 
   delegate :car_model, to: :car_modification
   delegate :car_brand, to: :car_model
