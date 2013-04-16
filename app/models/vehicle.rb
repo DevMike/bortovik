@@ -5,7 +5,11 @@ class Vehicle < ActiveRecord::Base
 
   COLORS = %w(чёрный белый жёлтый красный зелёный синий)
   enumerize :color, in: COLORS
-  TRANSMISSION = %w(механика автомат)
+  TRANSMISSION = %w(Автомат
+                    Адаптивная
+                    Вариатор
+                    Ручная/механическая
+                    Типтроник)
   enumerize :transmission, in: TRANSMISSION
 
   belongs_to :car_modification
