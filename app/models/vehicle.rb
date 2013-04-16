@@ -23,7 +23,9 @@ class Vehicle < ActiveRecord::Base
   accepts_nested_attributes_for :user_vehicles
 
   validates_presence_of :color, :transmission, :car_modification
-  validates_numericality_of :mileage, :engine_volume, :release_year
+  validates_numericality_of :mileage
+  validates :release_year, numericality: { greater_than_or_equal_to: 1900, less_than_or_equal_to: Time.now.year }
+  validates :engine_volume, numericality: { greater_than: 0.1, less_than_or_equal_to: 10.0 }
 
   delegate :car_model, to: :car_modification
   delegate :car_brand, to: :car_model
