@@ -40,4 +40,9 @@ module ApplicationHelper
     modifications = models.first.car_modifications
     [[:car_brand, brands], [:car_model, models], [:car_modification, modifications]].map { |car| cars_list_select(car.last, car.first)}.join('').html_safe
   end
+
+  def past_years_list(years_count=10)
+    current_year = Time.now.year
+    (current_year - years_count .. current_year).to_a.reverse
+  end
 end
