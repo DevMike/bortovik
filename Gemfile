@@ -1,7 +1,7 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
 
 gem "rails", "~> 3.2.12"
-gem "rake", "~> 10.0.3"
+gem "rake", "~> 10.0.4"
 
 gem "pg", "~> 0.14.1"
 gem "mysql"
@@ -54,7 +54,7 @@ gem "enumerize", "~> 0.5.1"
 gem "money-rails", "~> 0.7.1"
 
 #markup editor
-gem "ckeditor", :git => "https://github.com/ginter/ckeditor.git"
+gem "ckeditor", :git => "git://github.com/ginter/ckeditor.git"
 
 # attachments
 gem "paperclip", "= 3.0.4"
@@ -127,7 +127,7 @@ end
 
 group :test do
   gem "selenium-webdriver", "~> 2.29.0"
-  gem "capybara", :git => "https://github.com/DevMike/capybara.git"
+  gem "capybara", "~> 2.1.0"
   gem "database_cleaner", "~> 0.9.1"
   gem "spork", "~> 1.0.0r3"
   gem "email_spec", "~> 1.4.0"
