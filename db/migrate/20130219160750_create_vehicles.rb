@@ -6,11 +6,11 @@ class CreateVehicles < ActiveRecord::Migration
       t.string :transmission
       t.string :color
       t.integer :mileage
+      t.has_attached_file :photo
 
       t.timestamps
     end
 
-    add_attachment :vehicles, :photo
     add_index :vehicles, :car_modification_id
   end
 
