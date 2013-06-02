@@ -1,5 +1,7 @@
 %ul
   - @vehicles.each do |vehicle|
-    %li= link_to vehicle.name, vehicle
+    %li
+      = link_to vehicle.name, vehicle
+      = link_to t(:'vehicle.edit'), edit_user_vehicle_path(current_user, vehicle)
 
 = link_to t('vehicle.add'), new_user_vehicle_path

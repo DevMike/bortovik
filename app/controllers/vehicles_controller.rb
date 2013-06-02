@@ -1,9 +1,8 @@
 class VehiclesController < ApplicationController
   load_and_authorize_resource
-  before_filter :get_owner, only: [:index, :new, :create]
 
   def index
-    @vehicles = @user.vehicles
+    @vehicles = current_user.vehicles
   end
 
   def show
@@ -13,21 +12,27 @@ class VehiclesController < ApplicationController
   def new
     @vehicle = Vehicle.new
     @vehicle.car_modification = CarModification.first
-    @user_vehicle = UserVehicle.new(user: @user, vehicle: @vehicle)
+    @vehicle.user_vehicles.build
   end
 
   def create
-    if @vehicle = Vehicle.create(params[:vehicle])
-      uv = @user.user_vehicles.create(params[:vehicle][:user_vehicle])
-      uv.update_attribute(:vehicle, @vehicle)
-      redirect_to user_vehicles_path(@user), notice: t('vehicle.added')
+    @vehicle = Vehicle.new(params[:vehicle])
+
+    if @vehicle.save
+      uv = @vehicle.user_vehicles.build params[:vehicle][:user_vehicle]
+      uv.user = current_user
+      uv.save
+      redirect_to user_vehicles_path(current_user), notice: t('vehicle.added')
     else
       render :new
     end
   end
 
-  private
-  def get_owner
-    @user = User.find(params[:user_id])
+  def update
+    if @vehicle.update_attributes(params[:vehicle])
+      redirect_to user_vehicles_path(current_user), notice: t('vehicle.updated')
+    else
+      render partial: 'form'
+    end
   end
 end

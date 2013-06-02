@@ -15,7 +15,7 @@ Bortovik::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "registrations" }
   resources :users, only: [:show] do
-    resources :vehicles, only: [:index, :new, :create]
+    resources :vehicles, only: [:index, :new, :create, :edit, :update]
   end
   resources :vehicles, only: [:show]
 

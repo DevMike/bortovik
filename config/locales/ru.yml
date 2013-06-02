@@ -56,8 +56,10 @@ ru:
 
   vehicle:
     added: 'Автомобиль добавлен в гараж'
+    updated: 'Автомобиль успешно сохранен'
     add: 'Добавить автомобиль'
     new: 'Добавить автомобиль'
+    edit: 'Отредактировать'
 
   contact_form:
     name: Форма обратной связи
@@ -298,6 +300,7 @@ ru:
         name: Название
         description: Описание
       vehicle:
+        mileage_on_purchase: Пробег на момент покупки
         color: Цвет
         mileage: Пробег
         car_modification_id: Модификация
@@ -305,8 +308,9 @@ ru:
         car_model_id: Модель
         engine_volume: Объём двигателя
         transmission: Трансмиссия
-        vin: Номер кузова
+        vin: Номер кузова(VIN-код)
         release_year: Год выпуска
+        date_of_purchase: Дата покупки
       user_vehicle:
         date_of_purchase: Дата покупки
         mileage_on_purchase: Пробег на момент покупки
