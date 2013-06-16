@@ -1,0 +1,8 @@
+= f.input :"#{car}_id", as: :select, collection: collection, include_blank: false
+:javascript
+  $('#vehicle_#{car}_id').on('change', function(){
+    select = $(this);
+    resource_name = select.attr('id').match(/vehicle_(\w+)_id/)[1];
+    id = select.val();
+    $.getScript('/cars/' + resource_name + '/' + id);
+  });

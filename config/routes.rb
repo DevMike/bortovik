@@ -14,10 +14,15 @@ Bortovik::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "registrations" }
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :vehicles, only: [:index, :new, :create, :edit, :update]
+  end
+  resources :vehicles, only: [:show]
 
   match 'locations/:country_id' => 'locations#get_collection', :as => :regions
   match 'locations/:country_id/:region_id' => 'locations#get_collection', :as => :settlements
+
+  match 'cars/:resource/:id' => 'cars#get_collection', :as => :cars
 
   scope :controller => :home do
     get 'contact' => :contact, :as => :contact
