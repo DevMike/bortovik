@@ -1,5 +1,6 @@
 Bortovik::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
+  # mount Ckeditor::Engine => '/ckeditor'
 
   ##
   # Admin routes
@@ -16,8 +17,8 @@ Bortovik::Application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "registrations" }
   resources :users, only: [:show]
 
-  match 'locations/:country_id' => 'locations#get_collection', :as => :regions
-  match 'locations/:country_id/:region_id' => 'locations#get_collection', :as => :settlements
+  get 'locations/:country_id' => 'locations#get_collection', :as => :regions
+  get 'locations/:country_id/:region_id' => 'locations#get_collection', :as => :settlements
 
   scope :controller => :home do
     get 'contact' => :contact, :as => :contact

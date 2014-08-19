@@ -2,6 +2,12 @@
 require 'spec_helper'
 
 describe LocationsController do
+  let!(:user){ FactoryGirl.create :user }
+
+  before do
+    login_as user
+  end
+
   it "should return all country regions in appropriated order" do
     regions = FactoryGirl.create_list(:region, 3,
                                       :country => FactoryGirl.create(:country)).sort_by(&:name)

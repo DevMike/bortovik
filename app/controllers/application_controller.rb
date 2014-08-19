@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
-  before_filter :set_currency
-  before_filter :check_is_profile_filled
+  before_action :authenticate_user!
+  before_action :set_currency
+  before_action :check_is_profile_filled
 
   protect_from_forgery
   layout Proc.new { |controller| controller.request.xhr? ? false : 'main'}

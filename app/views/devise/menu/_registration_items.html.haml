@@ -3,5 +3,5 @@
     %ul.nav.nav-list
       %ul.nav
         %li= link_to(t('home.register'), new_user_registration_path)
-        - User::OUTSIDE_AUTH_SERVICES.each do |service|
-          %li= link_to_service service
+        /- User::OUTSIDE_AUTH_SERVICES.each do |service|
+        /  %li= link_to_service service

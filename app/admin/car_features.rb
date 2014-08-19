@@ -2,7 +2,7 @@ ActiveAdmin.register CarFeature do
   menu :label => 'Car Features', :parent => 'Cars', :priority => 4
 
     filter :name
-    filter :car_feature_category, :as => :select, :collection => CarFeatureCategory.order(:name).map(&:name)
+    # filter :car_feature_category, :as => :select, :collection => CarFeatureCategory.order(:name).map(&:name)
 
     index do
       column :name
