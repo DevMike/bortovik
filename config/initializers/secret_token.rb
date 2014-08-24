@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Bortovik::Application.config.secret_token = 'b9e6e8d3c923465fb05fc2c2bf8ca7204c2d87128aa5a184c8b6169068272481c02601c1cd98934edd0a526ec24297dd4422f3023dedfb9402c39bf269d4520a'
+Bortovik::Application.config.secret_token = '5c018ef51e980357060486ff3f442104535cbc9042b2733f073001cd006583fff21f6e76959b82897c120ee3cdc28cd7c05106f962d1ef1296b8df62ffe67d33'

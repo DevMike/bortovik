@@ -19,33 +19,17 @@
 
 
   %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-            %a.brand(href="#{root_path}") Bortovik
-          .container.nav-collapse
-            %ul.nav
-              - User::CURRENCIES.each do |currency|
-                %li
-                  - if currency == Money.default_currency.to_s
-                    = currency
-                  - else
-                    = link_to currency, url_for(:currency=> currency)
-              %li= link_to_profile(current_user) if user_signed_in?
-              = render 'devise/menu/login_items'
-    = render 'devise/menu/registration_items'
-
+    = render 'layouts/menu'
     .container#main
 
       .row
-        .span9
+        .col-md-9
           = bootstrap_flash
           = yield
-        .span3
+
+        .col-md-3
+          = render 'devise/menu/registration_items'
+
           .well.sidebar-nav
             %h3 Sidebar
             %ul.nav.nav-list
@@ -53,9 +37,9 @@
               %li= link_to "Link 1", "/path1"
               %li= link_to "Link 2", "/path2"
               %li= link_to "Link 3", "/path3"
-    
+
       %footer
-        %p &copy; Company 2012
+        %p &copy; Company 2014
     /
       Javascripts
       \==================================================

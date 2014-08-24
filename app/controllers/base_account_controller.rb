@@ -1,6 +1,6 @@
 class BaseAccountController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :set_current_user
+  before_action :authenticate_user!
+  before_action :set_current_user
 
   check_authorization :unless => :devise_controller?
 

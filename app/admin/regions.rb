@@ -7,7 +7,7 @@ ActiveAdmin.register Region do
   end
 
   filter :name
-  filter :country, :as => :select, :collection => Country.order(:name).map(&:name)
+  # filter :country, :as => :select, :collection => Country.order(:name).map(&:name)
 
   show do
     panel 'Attributes' do

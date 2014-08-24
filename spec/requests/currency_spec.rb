@@ -1,5 +1,5 @@
 require 'spec_helper'
-include Warden::Test::Helpers
+# include Warden::Test::Helpers
 describe "Currency" do
   before(:all) { @default_currency = 'UAH' }
   before { Money.default_currency = @default_currency }

@@ -5,7 +5,7 @@ ActiveAdmin.register User do
   filter :name
   #filter :country, :as => :select, :collection => Country.order(:name).map(&:name)
   #filter :region, :as => :select, :collection => Region.order(:name).map(&:name)
-  filter :settlement, :as => :select, :collection => Settlement.order(:name).map(&:name)
+  # filter :settlement, :as => :select, :collection => Settlement.order(:name).map(&:name)
 
   scope :all, :default => true
   scope :confirmed
