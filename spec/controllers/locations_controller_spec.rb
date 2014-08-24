@@ -5,7 +5,7 @@ describe LocationsController do
   let!(:user){ FactoryGirl.create :user }
 
   before do
-    login_as user
+    sign_in user
   end
 
   it "should return all country regions in appropriated order" do

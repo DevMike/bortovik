@@ -6,6 +6,7 @@ require 'capybara/rails'
 require 'database_cleaner'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join("spec/support/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 
@@ -24,7 +25,8 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
     DatabaseCleaner.start
   end
 
