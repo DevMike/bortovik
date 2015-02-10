@@ -2,6 +2,6 @@
 
 <p><%= t('devise.confirmations.confirm_by_link_below') %></p>
 
-<p><%= link_to t('devise.confirmations.confirm_my_account'), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p><%= link_to t('devise.confirmations.confirm_my_account'), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token), method: :post %></p>
 
 <%= render 'shared/mail_footer' %>

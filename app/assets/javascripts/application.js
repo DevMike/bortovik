@@ -13,38 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require rails.validations
-//= require rails.validations.simple_form
 //= require_tree ./lib
-//= require bootstrap-datepicker
-//= require dates
-
-window.ClientSideValidations.validators.local.presence = function(element, options) {
-   switch (element.attr('type')) {
-     case 'checkbox':
-     case 'radio':
-       if ($("input[name='"+element[0].name+"']:checked").length == 0) {
-         return options.message;
-       }
-       break;
-     default:
-       if (/^\s*$/.test(element.val() || '')) {
-           return options.message;
-       }
-   }
-   element.on('change', function(){
-       $(this).focusout();
-   });
-}
-
-window.ClientSideValidations.validators.local['one_of'] = function(element, options) {
-    var other_elements = options['with'] || [];
-    for(var i=0;i<other_elements.length;i++) {
-      if (element[0].form[other_elements[i]] != undefined) {
-          if (!window.ClientSideValidations.validators.local.presence($(element[0].form[other_elements[i]]), options)) {
-              return;
-          }
-      }
-    }
-    return window.ClientSideValidations.validators.local.presence(element, options);
-}

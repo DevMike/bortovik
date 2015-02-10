@@ -1,5 +1,6 @@
 Bortovik::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
+  # mount Ckeditor::Engine => '/ckeditor'
 
   ##
   # Admin routes
@@ -19,8 +20,8 @@ Bortovik::Application.routes.draw do
   end
   resources :vehicles, only: [:show]
 
-  match 'locations/:country_id' => 'locations#get_collection', :as => :regions
-  match 'locations/:country_id/:region_id' => 'locations#get_collection', :as => :settlements
+  get 'locations/:country_id' => 'locations#get_collection', :as => :regions
+  get 'locations/:country_id/:region_id' => 'locations#get_collection', :as => :settlements
 
   match 'cars/:resource/:id' => 'cars#get_collection', :as => :cars
 

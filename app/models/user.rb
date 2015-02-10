@@ -1,4 +1,41 @@
 # encoding: utf-8
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  name                   :string(255)      not null
+#  email                  :string(255)      default("")
+#  encrypted_password     :string(255)      default("")
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0)
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  settlement_id          :integer
+#  created_at             :datetime
+#  updated_at             :datetime
+#  confirmation_token     :string(255)
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  preferred_currency     :string(255)
+#  first_name             :string(255)
+#  last_name              :string(255)
+#  icq                    :string(255)
+#  skype                  :string(255)
+#  phone                  :string(255)
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
+#  provider               :string(255)
+#  url                    :string(255)
+#  gender                 :string(255)
+#
+
 
 class User < ActiveRecord::Base
   extend Enumerize
@@ -14,14 +51,11 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :registerable, :confirmable, :omniauthable
+         :registerable, :omniauthable#, :confirmable
+  #TODO: Enable confirmation.
 
   # Setup accessible (or protected) attributes for your model
   attr_accessor :agree, :country_id, :region_id, :password_confirmation
-  attr_accessible :name, :email, :remember_me, :settlement_id, :preferred_currency,
-                  :password, :password_confirmation,
-                  :first_name, :middle_name, :last_name,
-                  :icq, :skype, :phone, :avatar, :agree, :provider, :url
 
   belongs_to :settlement
   has_many :user_vehicles

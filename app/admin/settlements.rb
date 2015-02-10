@@ -7,7 +7,7 @@ ActiveAdmin.register Settlement do
   end
 
   filter :name
-  filter :region, :as => :select, :collection => Region.order(:name).map(&:name)
+  # filter :region, :as => :select, :collection => Region.order(:name).map(&:name)
 
   form do |f|
     f.inputs "Details" do

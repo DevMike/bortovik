@@ -1,8 +1,6 @@
 class Car < ActiveRecord::Base
   self.abstract_class = true
 
-  attr_accessible :name, :description, :slug
-
   validates :name, :presence => true
   validates :slug, :presence => true
 

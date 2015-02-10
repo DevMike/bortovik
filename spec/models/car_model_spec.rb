@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: car_models
+#
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  car_brand_id :integer
+#  created_at   :datetime
+#  updated_at   :datetime
+#  description  :text
+#  slug         :string(255)
+#
+
 require 'spec_helper'
 
 describe CarModel do
@@ -7,6 +20,6 @@ describe CarModel do
     it { should validate_uniqueness_of :slug}
   end
 
-  it_behaves_like "cars", :car_model
-  it_behaves_like "uniqueness regarding parent", :car_model, :car_brand_id, [:name]
+  # it_behaves_like "cars", :car_model
+  # it_behaves_like "uniqueness regarding parent", :car_model, :car_brand_id, [:name]
 end
