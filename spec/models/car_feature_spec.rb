@@ -3,7 +3,7 @@
 # Table name: car_features
 #
 #  id                      :integer          not null, primary key
-#  name                    :string(255)
+#  name                    :string
 #  car_feature_category_id :integer
 #  created_at              :datetime
 #  updated_at              :datetime

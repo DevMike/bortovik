@@ -3,16 +3,16 @@
 # Table name: car_models
 #
 #  id           :integer          not null, primary key
-#  name         :string(255)
+#  name         :string
 #  car_brand_id :integer
 #  created_at   :datetime
 #  updated_at   :datetime
 #  description  :text
-#  slug         :string(255)
+#  slug         :string
 #
 
 class CarModel < Car
-  default_scope order(:name)
+  default_scope { order(:name) }
   belongs_to :car_brand
   has_many :car_modifications, dependent: :destroy
 

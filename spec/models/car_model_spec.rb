@@ -3,12 +3,12 @@
 # Table name: car_models
 #
 #  id           :integer          not null, primary key
-#  name         :string(255)
+#  name         :string
 #  car_brand_id :integer
 #  created_at   :datetime
 #  updated_at   :datetime
 #  description  :text
-#  slug         :string(255)
+#  slug         :string
 #
 
 require 'spec_helper'

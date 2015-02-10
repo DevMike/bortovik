@@ -170,13 +170,13 @@ module Seeder
   class Starter
     class << self
       def seed
-        create_app_settings!
-        Locations.seed
+        # create_app_settings!
+        # Locations.seed
         Cars.seed
       end
 
       def create_app_settings!
-        AdminUser.create!({:email => 'zarechenskiy.mihail@gmail.com', :password => '80rt0v0j', :password_confirmation => '80rt0v0j'})#, :without_protection => true)
+        AdminUser.create!({:email => 'zarechenskiy.mihail@gmail.com', :password => '80rt0v0j', :password_confirmation => '80rt0v0j'})
       end
     end
   end

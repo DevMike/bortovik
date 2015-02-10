@@ -5,7 +5,7 @@
 #  id                  :integer          not null, primary key
 #  car_feature_id      :integer
 #  car_modification_id :integer
-#  value               :string(255)
+#  value               :string
 #
 
 class CarFeatureCarModification < ActiveRecord::Base

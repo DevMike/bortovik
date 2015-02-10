@@ -3,11 +3,11 @@
 # Table name: countries
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
+#  name       :string
 #  created_at :datetime
 #  updated_at :datetime
 #
 
 class Country < Location
-  has_many :regions, :dependent => :destroy
+  has_many :regions, dependent: :destroy
 end

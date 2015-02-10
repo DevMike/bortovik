@@ -1,4 +1,24 @@
 # encoding: utf-8
+# == Schema Information
+#
+# Table name: vehicles
+#
+#  id                  :integer          not null, primary key
+#  car_modification_id :integer
+#  engine_volume       :float
+#  transmission        :string
+#  color               :string
+#  mileage             :integer
+#  photo_file_name     :string
+#  photo_content_type  :string
+#  photo_file_size     :integer
+#  photo_updated_at    :datetime
+#  created_at          :datetime
+#  updated_at          :datetime
+#  vin                 :string
+#  release_year        :integer
+#
+
 
 class Vehicle < ActiveRecord::Base
   extend Enumerize
@@ -20,7 +40,6 @@ class Vehicle < ActiveRecord::Base
   has_many :car_feature_car_modifications, through: :car_modification
   alias_method :features, :car_feature_car_modifications
 
-  attr_accessible :color, :engine_volume, :mileage, :transmission, :car_modification_id, :car_model_id, :car_brand_id, :vin, :release_year, :user_vehicles_attributes
   attr_accessor :car_brand_id, :car_model_id
 
   accepts_nested_attributes_for :user_vehicles

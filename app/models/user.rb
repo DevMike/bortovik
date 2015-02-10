@@ -4,48 +4,48 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  name                   :string(255)      not null
-#  email                  :string(255)      default("")
-#  encrypted_password     :string(255)      default("")
-#  reset_password_token   :string(255)
+#  name                   :string           not null
+#  email                  :string           default("")
+#  encrypted_password     :string           default("")
+#  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
-#  sign_in_count          :integer          default(0)
+#  sign_in_count          :integer          default("0")
 #  current_sign_in_at     :datetime
 #  last_sign_in_at        :datetime
-#  current_sign_in_ip     :string(255)
-#  last_sign_in_ip        :string(255)
+#  current_sign_in_ip     :string
+#  last_sign_in_ip        :string
 #  settlement_id          :integer
 #  created_at             :datetime
 #  updated_at             :datetime
-#  confirmation_token     :string(255)
+#  confirmation_token     :string
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
-#  preferred_currency     :string(255)
-#  first_name             :string(255)
-#  last_name              :string(255)
-#  icq                    :string(255)
-#  skype                  :string(255)
-#  phone                  :string(255)
-#  avatar_file_name       :string(255)
-#  avatar_content_type    :string(255)
+#  preferred_currency     :string
+#  first_name             :string
+#  last_name              :string
+#  icq                    :string
+#  skype                  :string
+#  phone                  :string
+#  avatar_file_name       :string
+#  avatar_content_type    :string
 #  avatar_file_size       :integer
 #  avatar_updated_at      :datetime
-#  provider               :string(255)
-#  url                    :string(255)
-#  gender                 :string(255)
+#  provider               :string
+#  url                    :string
+#  gender                 :string
+#  unconfirmed_email      :string
 #
-
 
 class User < ActiveRecord::Base
   extend Enumerize
 
   CURRENCIES = %w(UAH RUB EUR USD)
-  enumerize :preferred_currency, :in => CURRENCIES
+  enumerize :preferred_currency, in: CURRENCIES
   OUTSIDE_AUTH_SERVICES = %w[facebook vkontakte]
-  enumerize :provider, :in => OUTSIDE_AUTH_SERVICES
+  enumerize :provider, in: OUTSIDE_AUTH_SERVICES
   GENDERS = %w[автолюбитель автолюбительница]
-  enumerize :gender, :in => GENDERS
+  enumerize :gender, in: GENDERS
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable, :timeoutable
@@ -61,18 +61,18 @@ class User < ActiveRecord::Base
   has_many :user_vehicles
   has_many :vehicles, through: :user_vehicles
 
-  scope :confirmed, where("#{table_name}.confirmation_token IS NOT NULL")
-  scope :unconfirmed, where(:confirmation_token => nil)
+  scope :confirmed, -> { where("#{table_name}.confirmation_token IS NOT NULL") }
+  scope :unconfirmed, -> { where(confirmation_token: nil) }
 
   validates_presence_of :settlement_id, :name, :email
-  validates_presence_of :password, :agree, :on => :create, :unless => :create_via_oauth?
-  validates_presence_of :password, :on => :update, :unless => :profile_filled?
+  validates_presence_of :password, :agree, on: :create, unless: :create_via_oauth?
+  validates_presence_of :password, on: :update, unless: :profile_filled?
   validates_confirmation_of :password
   validates_uniqueness_of :name
 
-  delegate :region, :country, :to => :settlement
+  delegate :region, :country, to: :settlement
 
-  after_initialize :assign_default_locations, :unless => :settlement
+  after_initialize :assign_default_locations, unless: :settlement
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" },
     url: '/uploads/:class/:id/:style_:filename'

@@ -6,8 +6,8 @@ class ContactMessage
   attr_accessor :name, :email, :description, :subject
 
   validates_presence_of :name, :email, :description
-  validates_length_of :description, :maximum => 1000
-  validates_format_of :email, :with => Devise::email_regexp
+  validates_length_of :description, maximum: 1000
+  validates_format_of :email, with: Devise::email_regexp
 
   def initialize(attributes=nil)
     if attributes.present?

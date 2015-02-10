@@ -3,36 +3,37 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  name                   :string(255)      not null
-#  email                  :string(255)      default("")
-#  encrypted_password     :string(255)      default("")
-#  reset_password_token   :string(255)
+#  name                   :string           not null
+#  email                  :string           default("")
+#  encrypted_password     :string           default("")
+#  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
-#  login_as_count          :integer          default(0)
-#  current_login_as_at     :datetime
-#  last_login_as_at        :datetime
-#  current_login_as_ip     :string(255)
-#  last_login_as_ip        :string(255)
+#  sign_in_count          :integer          default("0")
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string
+#  last_sign_in_ip        :string
 #  settlement_id          :integer
 #  created_at             :datetime
 #  updated_at             :datetime
-#  confirmation_token     :string(255)
+#  confirmation_token     :string
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
-#  preferred_currency     :string(255)
-#  first_name             :string(255)
-#  last_name              :string(255)
-#  icq                    :string(255)
-#  skype                  :string(255)
-#  phone                  :string(255)
-#  avatar_file_name       :string(255)
-#  avatar_content_type    :string(255)
+#  preferred_currency     :string
+#  first_name             :string
+#  last_name              :string
+#  icq                    :string
+#  skype                  :string
+#  phone                  :string
+#  avatar_file_name       :string
+#  avatar_content_type    :string
 #  avatar_file_size       :integer
 #  avatar_updated_at      :datetime
-#  provider               :string(255)
-#  url                    :string(255)
-#  gender                 :string(255)
+#  provider               :string
+#  url                    :string
+#  gender                 :string
+#  unconfirmed_email      :string
 #
 
 require 'spec_helper'

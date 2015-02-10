@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: vehicles
+#
+#  id                  :integer          not null, primary key
+#  car_modification_id :integer
+#  engine_volume       :float
+#  transmission        :string
+#  color               :string
+#  mileage             :integer
+#  photo_file_name     :string
+#  photo_content_type  :string
+#  photo_file_size     :integer
+#  photo_updated_at    :datetime
+#  created_at          :datetime
+#  updated_at          :datetime
+#  vin                 :string
+#  release_year        :integer
+#
+
 require 'spec_helper'
 
 describe Vehicle do
