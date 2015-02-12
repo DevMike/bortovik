@@ -1,6 +1,4 @@
 class VehiclesController < ApplicationController
-  load_and_authorize_resource
-
   def index
     @vehicles = current_user.vehicles
   end
@@ -16,12 +14,12 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    @vehicle = Vehicle.new(params[:vehicle])
+    @vehicle = Vehicle.new(vehicle_params)
 
+    uv = @vehicle.user_vehicles.last
+    uv.user = current_user
+    uv.vehicle = @vehicle
     if @vehicle.save
-      uv = @vehicle.user_vehicles.build params[:vehicle][:user_vehicle]
-      uv.user = current_user
-      uv.save
       redirect_to user_vehicles_path(current_user), notice: t('vehicle.added')
     else
       render :new
@@ -34,5 +32,24 @@ class VehiclesController < ApplicationController
     else
       render partial: 'form'
     end
+  end
+
+  def edit
+    @vehicle = Vehicle.find(params[:id])
+  end
+
+  private def vehicle_params
+    params.require(:vehicle).permit(
+      :car_brand_id,
+      :car_model_id,
+      :car_modification_id,
+      :release_year,
+      :engine_volume,
+      :transmission,
+      :vin,
+      :color,
+      :mileage,
+      user_vehicles_attributes: [:id, :date_of_purchase, :mileage_on_purchase]
+    )
   end
 end

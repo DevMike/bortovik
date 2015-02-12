@@ -1,22 +1,52 @@
-!!!
-%html
+!!! 5
+%html(lang="en")
   %head
-    %title Bortovik
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) : "Bortovik"
     = csrf_meta_tags
-  %body
-    %ul.hmenu
-      = render 'devise/menu/registration_items'
-      = render 'devise/menu/login_items'
-    %p.notice= notice
-    %p.alert= alert
-    = yield
-    = render "/layouts/javascripts"
-    %div{ :style => "position:absolute; top:30px; right:50px;" }
-      - User::CURRENCIES.each do |currency|
-        - if currency == Money.default_currency.to_s
-          = currency
-        - else
-          = link_to currency, url_for(:currency=> currency)
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+    = stylesheet_link_tag "application", :media => "all"
+    %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
+    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
+    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
+    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
+    -#@TODO: should be enabled later
+    -#%link(href="favicon.ico" rel="shortcut icon")
+    = javascript_include_tag "application", :debug => Settings.system.enable_js_debug
 
+
+  %body
+    = render 'layouts/menu'
+    .container#main
+
+      .row
+        .col-md-9
+          = bootstrap_flash
+          = yield
+
+        .col-md-3
+          = render 'devise/menu/registration_items'
+
+          .well.sidebar-nav
+            %h3 Sidebar
+            %ul.nav.nav-list
+              %li.nav-header Sidebar
+              - if current_user
+                %li= link_to(t('home.edit_registration'), edit_user_registration_path)
+                %li= link_to t('users.garage'), user_vehicles_path(current_user)
+                %li= link_to(t('home.logout'), destroy_user_session_path, :method => :delete)
+
+      %footer
+        %p &copy; Company 2015
+    #modal
+
+    /
+      Javascripts
+      \==================================================
+    / Placed at the end of the document so the pages load faster
+    = javascript_include_tag "application"
+    = render "/layouts/javascripts"

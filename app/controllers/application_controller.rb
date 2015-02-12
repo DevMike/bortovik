@@ -1,18 +1,18 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-  before_action :set_currency
+  # before_action :set_currency
   before_action :check_is_profile_filled
 
   protect_from_forgery
-  layout Proc.new { |controller| controller.request.xhr? ? false : 'main'}
+  # layout Proc.new { |controller| controller.request.xhr? ? false : 'main'}
 
   protected
-  def set_currency
-    if params[:currency]
-      MoneyRails.default_currency = params[:currency]
-      current_user.update_attribute(:preferred_currency, params[:currency]) if user_signed_in?
-    end
-  end
+  # def set_currency
+  #   if params[:currency]
+  #     MoneyRails.default_currency = params[:currency]
+  #     current_user.update_attribute(:preferred_currency, params[:currency]) if user_signed_in?
+  #   end
+  # end
 
   #redefine default devise methods
   def after_sign_in_path_for(resource_or_scope)

@@ -20,6 +20,8 @@ gem 'therubyracer', '~> 0.11.4', platform: :ruby
 gem 'libv8', '~> 3.11.8.17', platform: :ruby #therubyracer dependency, may be optional in future
 gem 'coffee-rails', '~> 4.0.1'
 
+gem "select2-rails"
+
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', '~> 3.2.0'
 gem 'simple_form', '~> 3.0.2'

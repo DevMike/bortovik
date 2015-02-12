@@ -8,11 +8,11 @@
         %a.brand(href="#{root_path}") Bortovik
       .container.nav-collapse
         %ul.nav.pull-right
-          - User::CURRENCIES.each do |currency|
-            %li
-              - if currency == Money.default_currency.to_s
-                = currency
-              - else
-                = link_to currency, url_for(:currency=> currency)
+          / - User::CURRENCIES.each do |currency|
+          /   %li
+          /     - if currency == Money.default_currency.to_s
+          /       = currency
+          /     - else
+          /       = link_to currency, url_for(:currency=> currency)
           %li= link_to_profile(current_user) if user_signed_in?
           = render 'devise/menu/login_items'
