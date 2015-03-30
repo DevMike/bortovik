@@ -1,4 +1,5 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 gem 'rails', '>= 4.2'
 gem 'rake', '~> 10.0.4'
@@ -20,7 +21,7 @@ gem 'therubyracer', '~> 0.11.4', platform: :ruby
 gem 'libv8', '~> 3.11.8.17', platform: :ruby #therubyracer dependency, may be optional in future
 gem 'coffee-rails', '~> 4.0.1'
 
-gem "select2-rails"
+gem 'select2-rails'
 
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', '~> 3.2.0'
@@ -40,9 +41,6 @@ gem 'rails_config', '~> 0.4.2'
 # imagemagick support
 gem 'mini_magick', '~> 3.5.0'
 
-# admin backend
-gem 'activeadmin', '~> 1.0.0.pre', github: 'activeadmin'
-
 gem 'rack-rewrite', '~> 1.3.3'
 
 # AR enum attributes
@@ -55,7 +53,7 @@ gem 'ckeditor', '~> 4.1.0'
 
 # attachments
 gem 'paperclip', '~> 4.2.0'
-# gem "cocaine", "= 0.3.2"
+# gem 'cocaine', '= 0.3.2'
 gem 'carrierwave', '~> 0.10.0'
 
 gem 'activerecord-session_store', '~> 0.1.0'
@@ -102,6 +100,8 @@ gem 'mechanize', '~> 2.5.1'
 #unicode support
 gem 'unicode', '~> 0.4.4.1'
 
+gem 'rails-assets-Bootflat'
+
 group :test, :development do
   gem 'rspec-rails', '~> 3.0.2'
   gem 'shoulda-matchers', '~> 2.6.2'
@@ -127,7 +127,7 @@ group :test do
   gem 'capybara', '~> 2.4.1'
   # gem 'database_cleaner', '~> 1.3.0'
   gem 'database_cleaner'#, git: 'git@github.com:bmabey/database_cleaner.git'
-  gem "spork", "~> 1.0.0r3"
+  gem 'spork', '~> 1.0.0r3'
   gem 'email_spec', '~> 1.6.0'
   gem 'timecop', '~> 0.7.1'
 end
