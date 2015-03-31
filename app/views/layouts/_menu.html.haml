@@ -14,5 +14,8 @@
           /       = currency
           /     - else
           /       = link_to currency, url_for(:currency=> currency)
-          %li= link_to_profile(current_user) if user_signed_in?
+          - if user_signed_in?
+            %li= link_to t('users.garage'), user_vehicles_path(current_user)
+            %li= link_to t('users.users'), users_path
+            %li= link_to_profile(current_user)
           = render 'devise/menu/login_items'

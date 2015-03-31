@@ -53,6 +53,7 @@ ru:
     skype: Skype
     phone: Телефон
     garage: Гараж
+    users: Пользователи
 
   vehicle:
     added: 'Автомобиль добавлен в гараж'

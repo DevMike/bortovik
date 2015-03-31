@@ -1,12 +1,15 @@
 Bortovik::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
-
   # devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "registrations" }
-  resources :users, only: [:show] do
+
+  resources :users, only: [:index, :show, :update] do
     resources :vehicles, only: [:index, :new, :create, :edit, :update]
   end
+
+  resource :user, only: [:edit]
+
   resources :vehicles, only: [:show]
 
   get 'locations/:country_id' => 'locations#get_collection', :as => :regions
@@ -14,11 +17,16 @@ Bortovik::Application.routes.draw do
 
   get 'cars/:resource/:id' => 'cars#get_collection', as: :cars
 
+  #TODO Refactor this
   scope controller: :home do
     get 'contact' => :contact, as: :contact
     post 'contact_message' => :contact_message
   end
 
+  #TODO Refactor this
+  scope controller: :dashboard do
+    get '/' => :index
+  end
 
   root :to => 'home#index'
 

@@ -1,0 +1,22 @@
+%h3 Редактирование профиля пользователя
+
+= simple_form_for(@user, html: { method: :put, class: 'form-horizontal' }, :validate => true) do |f|
+  = f.error_notification
+  = f.input :email, :required => true
+  = f.input :name, :required => true, :autofocus => true
+  = f.input :password, :required => false, :input_html => { :autocomplete => "off" },
+                       :hint => @user.profile_filled? ? t(:"users.password_hint") : ""
+  = f.input :password_confirmation, :required => false
+  = f.input :first_name
+  = f.input :last_name
+  = image_tag @user.avatar.url(:medium)
+  = f.input :avatar
+  = f.input :icq
+  = f.input :skype
+  = f.input :phone
+  .form-actions
+    = f.button :submit, t(:"global.save"), class: 'btn-primary'
+%p
+  / = link_to t(:"users.remove"), registration_path(resource_name), :confirm => t(:"global.confirm"), :method => :delete
+  /\.
+= link_to t("global.back"), :back

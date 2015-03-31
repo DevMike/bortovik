@@ -18,35 +18,18 @@
     -#%link(href="favicon.ico" rel="shortcut icon")
     = javascript_include_tag "application", :debug => Settings.system.enable_js_debug
 
-
   %body
     = render 'layouts/menu'
     .container#main
+      = bootstrap_flash
+      = yield
 
-      .row
-        .col-md-9
-          = bootstrap_flash
-          = yield
+    %footer.footer
+      .container
+        &copy; Company 2015
 
-        .col-md-3
-          = render 'devise/menu/registration_items'
+        = link_to t('home.contact_us'), contact_path
 
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              - if current_user
-                %li= link_to(t('home.edit_registration'), edit_user_registration_path)
-                %li= link_to t('users.garage'), user_vehicles_path(current_user)
-                %li= link_to(t('home.logout'), destroy_user_session_path, :method => :delete)
-
-      %footer
-        %p &copy; Company 2015
     #modal
 
-    /
-      Javascripts
-      \==================================================
-    / Placed at the end of the document so the pages load faster
-    = javascript_include_tag "application"
     = render "/layouts/javascripts"

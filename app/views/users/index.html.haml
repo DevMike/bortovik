@@ -1,0 +1,5 @@
+%ul
+  - @users.each do |user|
+    %li
+      = user.full_name
+      = link_to 'User page', user_path(user)

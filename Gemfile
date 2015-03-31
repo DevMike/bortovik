@@ -6,6 +6,8 @@ gem 'rake', '~> 10.0.4'
 
 gem 'pg', '~> 0.17.1'
 
+gem 'jquery-rails'
+
 # Authentication and authorization
 gem 'devise', '>= 3.4.1'
 gem 'devise-encryptable', '~> 0.2.0'
@@ -100,7 +102,7 @@ gem 'mechanize', '~> 2.5.1'
 #unicode support
 gem 'unicode', '~> 0.4.4.1'
 
-gem 'rails-assets-Bootflat'
+# gem 'rails-assets-Bootflat'
 
 group :test, :development do
   gem 'rspec-rails', '~> 3.0.2'
