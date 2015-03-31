@@ -1,0 +1,21 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+        %a.brand(href="#{root_path}") Bortovik
+      .container.nav-collapse
+        %ul.nav.pull-right
+          / - User::CURRENCIES.each do |currency|
+          /   %li
+          /     - if currency == Money.default_currency.to_s
+          /       = currency
+          /     - else
+          /       = link_to currency, url_for(:currency=> currency)
+          - if user_signed_in?
+            %li= link_to t('users.garage'), user_vehicles_path(current_user)
+            %li= link_to t('users.users'), users_path
+            %li= link_to_profile(current_user)
+          = render 'devise/menu/login_items'

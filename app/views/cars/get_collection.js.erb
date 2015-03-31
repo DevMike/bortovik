@@ -1,0 +1,2 @@
+$('#vehicle_<%= @child_resource %>_id').parent().parent().replaceWith('<%= escape_javascript(cars_list_select(@list, @child_resource)) %>');
+$('#vehicle_<%= @child_resource %>_id').trigger('change');

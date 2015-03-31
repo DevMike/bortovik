@@ -1,0 +1,26 @@
+= simple_form_for([current_user, @vehicle], html: {class: 'form-horizontal'}, validate: true) do |f|
+  = render_car_brand
+  = f.input :release_year
+  = f.input :engine_volume
+  = f.input :transmission
+  = f.input :vin
+  = f.input :color
+  = f.input :mileage
+  = f.simple_fields_for :user_vehicles, @vehicle.user_vehicles.last do |uv|
+    = uv.input :date_of_purchase, as: :string, input_html: {'data-behaviour' => 'datepicker'}
+    = uv.input :mileage_on_purchase
+
+  .form-actions
+    = f.submit
+
+- content_for :js do
+  :javascript
+    $("#vehicle_release_year").datepicker({
+      format: " yyyy",
+      viewMode: "years",
+      minViewMode: "years",
+      endDate: '#{Time.now.year}'
+    });
+
+:coffeescript
+  form = new Vehicles.form()

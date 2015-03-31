@@ -1,1 +1,7 @@
-%p= link_to t(:'home.contact_us'), contact_path
+.row
+  .col-md-10.col-md-offset-1
+    Это главная страница. Когда-то тут будет контент. На данный момент Вы можете перейти по ссылке и
+    = link_to 'зарегестрироваться', new_user_registration_path
+    , либо
+    = link_to 'войти', new_user_session_path
+    , если у Вас уже есть аккаунт

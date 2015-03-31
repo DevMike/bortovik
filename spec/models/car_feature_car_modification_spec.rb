@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: car_feature_car_modifications
+#
+#  id                  :integer          not null, primary key
+#  car_feature_id      :integer
+#  car_modification_id :integer
+#  value               :string
+#
+
 require 'spec_helper'
 
 describe CarFeatureCarModification do

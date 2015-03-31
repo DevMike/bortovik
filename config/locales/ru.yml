@@ -1,4 +1,7 @@
 ru:
+  helpers:
+    submit:
+      create: Добавить %{model}
 
   global:
     title: 'bortovik.net'
@@ -49,6 +52,15 @@ ru:
     icq: ICQ
     skype: Skype
     phone: Телефон
+    garage: Гараж
+    users: Пользователи
+
+  vehicle:
+    added: 'Автомобиль добавлен в гараж'
+    updated: 'Автомобиль успешно сохранен'
+    add: 'Добавить автомобиль'
+    new: 'Добавить автомобиль'
+    edit: 'Отредактировать'
 
   contact_form:
     name: Форма обратной связи
@@ -270,22 +282,40 @@ ru:
         subject: Тема
 
   activerecord:
+    models:
+      vehicle: Авто
     attributes:
       car_brand:
         name: Название
         description: Описание
       car_feature:
         name: Характеристика
-      car_feature_car_modificaiton:
+      car_feature_car_modification:
         value: Значение
       car_feature_category:
         name: Тип характеристик
       car_model:
         name: Название
         description: Описание
-      car_modificaiton:
+      car_modification:
         name: Название
         description: Описание
+      vehicle:
+        mileage_on_purchase: Пробег на момент покупки
+        color: Цвет
+        mileage: Пробег
+        car_modification_id: Модификация
+        car_brand_id: Марка
+        car_model_id: Модель
+        engine_volume: Объём двигателя
+        transmission: Трансмиссия
+        vin: Номер кузова(VIN-код)
+        release_year: Год выпуска
+        date_of_purchase: Дата покупки
+        mileage_on_purchase: Пробег на момент покупки
+      user_vehicle:
+        date_of_purchase: Дата покупки
+        mileage_on_purchase: Пробег на момент покупки
       country:
         name: Название
       region:
@@ -295,6 +325,8 @@ ru:
       user:
         name: Ник
         email: Email
+        first_name: Имя
+        last_name: Фамилия
         password: Пароль
         password_confirmation: Подтверждение пароля
         current_password: Текущий пароль
@@ -304,6 +336,8 @@ ru:
         agree: Согласен(на) с условиями
         country_id: Страна
         region_id: Регион
+        avatar: Аватар
+        phone: Телефон
 
     errors:
       models:

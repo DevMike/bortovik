@@ -1,44 +1,81 @@
 # encoding: utf-8
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  name                   :string           not null
+#  email                  :string           default("")
+#  encrypted_password     :string           default("")
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default("0")
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string
+#  last_sign_in_ip        :string
+#  settlement_id          :integer
+#  created_at             :datetime
+#  updated_at             :datetime
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  preferred_currency     :string
+#  first_name             :string
+#  last_name              :string
+#  icq                    :string
+#  skype                  :string
+#  phone                  :string
+#  avatar_file_name       :string
+#  avatar_content_type    :string
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
+#  provider               :string
+#  url                    :string
+#  gender                 :string
+#  unconfirmed_email      :string
+#
 
 class User < ActiveRecord::Base
   extend Enumerize
 
   CURRENCIES = %w(UAH RUB EUR USD)
-  enumerize :preferred_currency, :in => CURRENCIES
+  enumerize :preferred_currency, in: CURRENCIES
   OUTSIDE_AUTH_SERVICES = %w[facebook vkontakte]
-  enumerize :provider, :in => OUTSIDE_AUTH_SERVICES
+  enumerize :provider, in: OUTSIDE_AUTH_SERVICES
   GENDERS = %w[автолюбитель автолюбительница]
-  enumerize :gender, :in => GENDERS
+  enumerize :gender, in: GENDERS
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :registerable, :confirmable, :omniauthable
+         :registerable, :omniauthable#, :confirmable
+  #TODO: Enable confirmation.
 
   # Setup accessible (or protected) attributes for your model
   attr_accessor :agree, :country_id, :region_id, :password_confirmation
-  attr_accessible :name, :email, :remember_me, :settlement_id, :preferred_currency,
-                  :password, :password_confirmation,
-                  :first_name, :middle_name, :last_name,
-                  :icq, :skype, :phone, :avatar, :agree, :provider, :url
 
   belongs_to :settlement
+  has_many :user_vehicles
+  has_many :vehicles, through: :user_vehicles
 
-  scope :confirmed, where("#{table_name}.confirmation_token IS NOT NULL")
-  scope :unconfirmed, where(:confirmation_token => nil)
+  scope :confirmed, -> { where("#{table_name}.confirmation_token IS NOT NULL") }
+  scope :unconfirmed, -> { where(confirmation_token: nil) }
 
-  validates_presence_of :settlement_id, :name
-  validates_presence_of :password, :agree, :on => :create, :unless => :create_via_oauth?
-  validates_presence_of :password, :on => :update, :unless => :profile_filled?
+  validates_presence_of :settlement_id, :name, :email
+  validates_presence_of :password, :agree, on: :create, unless: :create_via_oauth?
+  validates_presence_of :password, on: :update, unless: :profile_filled?
   validates_confirmation_of :password
   validates_uniqueness_of :name
 
-  delegate :region, :country, :to => :settlement
+  delegate :region, :country, to: :settlement
 
-  after_initialize :assign_default_locations, :unless => :settlement
-  
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  after_initialize :assign_default_locations, unless: :settlement
+
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" },
+    url: '/uploads/:class/:id/:style_:filename'
 
   def full_name
     "#{first_name} #{last_name}"

@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_user!
+  skip_before_action :authenticate_user!
 
   def contact
     @contact_message = ContactMessage.new
@@ -13,5 +13,9 @@ class HomeController < ApplicationController
     else
       render :contact
     end
+  end
+
+  def index
+    redirect_to dashboard_path if current_user
   end
 end

@@ -1,5 +1,3 @@
-require 'mysql'
-
 class AutosPostsImporter
   class << self
     RESULT_FILENAME = 'db/seed/cars_posts.yml'

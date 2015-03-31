@@ -9,8 +9,8 @@ module Bortovik
 
         # If no limitations provided, strip all attributes by default
         (self.strip_attributes_options || attribute_names).each do |attr|
-          value = self[attr.to_sym]
-          if value.respond_to?(:strip)
+          value = self[attr.to_sym] if attr
+          if value && value.respond_to?(:strip)
             record[attr] = (value.blank?) ? nil : value.strip
           end
         end

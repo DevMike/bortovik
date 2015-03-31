@@ -16,5 +16,4 @@ end
 # Initialize the rails application
 Bortovik::Application.initialize!
 
-require 'patches/activeadmin'
-require 'patches/simple_form'
+# require 'patches/simple_form'

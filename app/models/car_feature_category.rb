@@ -1,6 +1,14 @@
-class CarFeatureCategory < ActiveRecord::Base
-  attr_accessible :name
+# == Schema Information
+#
+# Table name: car_feature_categories
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  created_at :datetime
+#  updated_at :datetime
+#
 
+class CarFeatureCategory < ActiveRecord::Base
   has_many :car_features, dependent: :destroy
 
   validates_presence_of :name

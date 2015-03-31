@@ -1,28 +1,34 @@
 Bortovik::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
-  ##
-  # Admin routes
-  ##
+  # devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "registrations" }
 
-  # rescue when tables are not exists yet (in case rake db:setup etc)
-  begin
-    ActiveAdmin.routes(self)
-  rescue ActiveRecord::StatementInvalid => e
-    puts "--------------\n #{e.message} ----------------\n"
+  resources :users, only: [:index, :show, :update] do
+    resources :vehicles, only: [:index, :new, :create, :edit, :update]
   end
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "registrations" }
-  resources :users, only: [:show]
+  resource :user, only: [:edit]
 
-  match 'locations/:country_id' => 'locations#get_collection', :as => :regions
-  match 'locations/:country_id/:region_id' => 'locations#get_collection', :as => :settlements
+  resources :vehicles, only: [:show]
 
-  scope :controller => :home do
-    get 'contact' => :contact, :as => :contact
+  get 'locations/:country_id' => 'locations#get_collection', :as => :regions
+  get 'locations/:country_id/:region_id' => 'locations#get_collection', :as => :settlements
+
+  get 'cars/:resource/:id' => 'cars#get_collection', as: :cars
+
+  #TODO Refactor this
+  scope controller: :home do
+    get 'contact' => :contact, as: :contact
     post 'contact_message' => :contact_message
   end
+
+  #TODO Refactor this
+  scope controller: :dashboard do
+    get '/' => :index
+  end
+
+  root :to => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -73,7 +79,6 @@ Bortovik::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

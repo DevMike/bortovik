@@ -9,4 +9,6 @@
   %dd= @user.phone
 
 - if can? :edit, @user
-  = link_to(t('home.edit_registration'), edit_user_registration_path)
+  = link_to(t('home.edit_registration'), edit_user_path)
+
+%p= link_to t('users.garage'), user_vehicles_path(@user)

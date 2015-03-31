@@ -1,132 +1,135 @@
-source "http://rubygems.org"
+source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
-gem "rails", "~> 3.2.12"
-gem "rake", "~> 10.0.3"
+gem 'rails', '>= 4.2'
+gem 'rake', '~> 10.0.4'
 
-gem "pg", "~> 0.14.1"
+gem 'pg', '~> 0.17.1'
+
+gem 'jquery-rails'
 
 # Authentication and authorization
-gem "devise", "~> 2.2.3"
-gem "devise-encryptable", "~> 0.1.1"
-gem "omniauth", "~> 1.1.3"
-gem "omniauth-facebook", "~> 1.4.1"
-gem "omniauth-vkontakte", "~> 1.2.0"
+gem 'devise', '>= 3.4.1'
+gem 'devise-encryptable', '~> 0.2.0'
+gem 'omniauth', '~> 1.2.2'
+gem 'omniauth-facebook', '~> 2.0.0'
+gem 'omniauth-vkontakte', '~> 1.3.2'
 
-# View related gems
-gem "compass-rails", "~> 1.0.3"
-gem "sass-rails", "~> 3.2.6"
-gem "uglifier", "~> 1.3.0"
-gem "haml-rails", "~> 0.4"
-gem "therubyracer", "~> 0.11.3", :platform => :ruby
-gem "libv8", "~> 3.11.8.13", :platform => :ruby #therubyracer dependency, may be optional in future
-gem "coffee-script", "~> 2.2.0" # jquery is dependency
-#twitter bootstrap support
-gem "less-rails", "~> 2.2.6"
-gem "twitter-bootstrap-rails", "~> 2.2.3"
-# forms
-gem "simple_form", "~> 2.0.4"
-gem 'client_side_validations', "~> 3.2.1"
-gem 'client_side_validations-simple_form', "~> 2.0.1"
+gem 'compass-rails', '~> 2.0.0'
+gem 'sass-rails', '~> 4.0.3'
+gem 'uglifier', '~> 2.5.3'
+gem 'haml-rails', '~> 0.5.3'
+gem 'therubyracer', '~> 0.11.4', platform: :ruby
+gem 'libv8', '~> 3.11.8.17', platform: :ruby #therubyracer dependency, may be optional in future
+gem 'coffee-rails', '~> 4.0.1'
+
+gem 'select2-rails'
+
+gem 'less-rails'
+gem 'twitter-bootstrap-rails', '~> 3.2.0'
+gem 'simple_form', '~> 3.0.2'
+# gem 'client_side_validations', '~> 3.2.6'
+# gem 'client_side_validations-simple_form', '~> 2.1.0'
 
 # Rake task schedule
-gem "whenever", "~> 0.8.2", :require => false
+gem 'whenever', '~> 0.8.4', require: false
 
 # Permissions
-gem "cancan", "~> 1.6.9"
+gem 'cancan', '~> 1.6.10'
 
 # config yaml file
-gem "rails_config", ">= 0.2.5d"
+gem 'rails_config', '~> 0.4.2'
 
 # imagemagick support
-gem "mini_magick", "~> 3.5.0"
+gem 'mini_magick', '~> 3.5.0'
 
-# admin backend
-gem "activeadmin", "~> 0.5.1"
-
-gem "rack-rewrite", "~> 1.3.3"
+gem 'rack-rewrite', '~> 1.3.3'
 
 # AR enum attributes
-gem "enumerize", "~> 0.5.1"
+gem 'enumerize', '~> 0.8.0'
 
 #monetize
-gem "money-rails", "~> 0.7.1"
+gem 'money-rails', '~> 1.3.0'
 
-#markup editor
-gem "ckeditor", :git => "https://github.com/ginter/ckeditor.git"
+gem 'ckeditor', '~> 4.1.0'
 
 # attachments
-gem "paperclip"
-gem 'carrierwave'
+gem 'paperclip', '~> 4.2.0'
+# gem 'cocaine', '= 0.3.2'
+gem 'carrierwave', '~> 0.10.0'
+
+gem 'activerecord-session_store', '~> 0.1.0'
 
 # Database-backed asynchronous priority queue system
 # @TODO: could be enabled later
-#gem "delayed_job", "~> 3.0.1"
-#gem "delayed_job_active_record", "~> 0.3.2"
+#gem 'delayed_job', '~> 3.0.1'
+#gem 'delayed_job_active_record', '~> 0.3.2'
 
 # search support
 # @TODO: could be used later for filters and autocomplete
-#gem "meta_search", "~> 1.1.3"
+#gem 'meta_search', '~> 1.1.3'
 
 # config in database
 # @TODO: could be enabled later
-#gem "rails-settings-cached"
+#gem 'rails-settings-cached'
 
 # Deploy
 # heroku require it
-gem "thin", "~> 1.5.0"
+gem 'thin', '~> 1.5.1'
 
 # @TODO: could be enabled later
-#gem "capistrano", "~> 2.11.2"
-#gem "capistrano-ext", "~> 1.2.1"
+#gem 'capistrano', '~> 2.11.2'
+#gem 'capistrano-ext', '~> 1.2.1'
 
 # Google Analytics Export API Ruby Wrapper
 # @TODO: could be enabled later
-#gem "simple_analytics", "~> 0.0.1"
+#gem 'simple_analytics', '~> 0.0.1'
 
 # Exceptions notifications
 # @TODO: could be enabled later
-#gem "airbrake", "~> 3.0.rc2"
+#gem 'airbrake', '~> 3.0.rc2'
 
 # soft delete
 # @TODO: could be enabled later
-# gem "soft_destroyable", "~> 0.5.0", :git => "git://github.com/stasl/soft_destroyable.git"
+# gem 'soft_destroyable', '~> 0.5.0', :git => 'git://github.com/stasl/soft_destroyable.git'
 
 # Performance monitoring
 # @TODO: could be enabled later
-# gem "newrelic_rpm", "~>3.3.1"
+# gem 'newrelic_rpm', '~>3.3.1'
 
 #parser gems
-gem 'mechanize', "~> 2.5.1"
+gem 'mechanize', '~> 2.5.1'
 #unicode support
-gem 'unicode'
+gem 'unicode', '~> 0.4.4.1'
 
-gem "mysql", :require => false
+# gem 'rails-assets-Bootflat'
 
 group :test, :development do
-  gem "rspec-rails", "~> 2.12.0"
-  gem "shoulda-matchers", "~> 1.4.2"
-  gem "factory_girl_rails", "~> 4.2.1"
-  gem "syntax", "~> 1.0.0"
-  gem "rails3-generators", "~> 1.0.0"
-  gem "faker", "~> 1.1.2"
-  gem "parallel_tests", "~> 0.9.3"
+  gem 'rspec-rails', '~> 3.0.2'
+  gem 'shoulda-matchers', '~> 2.6.2'
+  gem 'factory_girl_rails', '~> 4.4.1'
+  gem 'syntax', '~> 1.2.0'
+  gem 'faker', '~> 1.4.3'
+  gem 'parallel_tests', '~> 1.0.5'
+  gem 'pry', '~> 0.10.1'
 end
 
 group :development do
-  gem "bullet"
-  # Local mailer
-  gem "mailcatcher", "~> 0.5.10"
-  # for debugging
-  gem "pry", "~> 0.9.10"
+  gem 'bullet', '~> 4.13.1'
+  gem 'letter_opener', '~> 1.2.0'
   #vkontakte test
-  gem "localtunnel"
+  #gem 'localtunnel'
+
+  gem 'annotate', '~> 2.6.5'
+  gem 'quiet_assets', '~> 1.0.3'
 end
 
 group :test do
-  gem "selenium-webdriver", "~> 2.29.0"
-  gem "capybara", :git => "https://github.com/DevMike/capybara.git"
-  gem "database_cleaner", "~> 0.9.1"
-  gem "spork", "~> 1.0.0r3"
-  gem "email_spec", "~> 1.4.0"
-  gem "timecop", "~> 0.5.9.2"
+  gem 'selenium-webdriver', '~> 2.42.0'
+  gem 'capybara', '~> 2.4.1'
+  # gem 'database_cleaner', '~> 1.3.0'
+  gem 'database_cleaner'#, git: 'git@github.com:bmabey/database_cleaner.git'
+  gem 'spork', '~> 1.0.0r3'
+  gem 'email_spec', '~> 1.6.0'
+  gem 'timecop', '~> 0.7.1'
 end

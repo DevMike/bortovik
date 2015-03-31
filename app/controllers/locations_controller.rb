@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  skip_before_filter :authenticate_user!
+  skip_before_action :authenticate_user!
 
   def get_collection
     if params[:region_id].present?
